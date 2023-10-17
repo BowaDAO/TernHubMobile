@@ -27,7 +27,8 @@ export const SIZE = {
 export const PADDING = {
   normal: 15,
   small: 8,
-  large: 24,
+  large: 16,
+  xlarge: 32,
 };
 
 export const RADIUS = {
@@ -46,7 +47,7 @@ export const GAP = {
   large: 30,
   normal: 24,
   base: 16,
-  regular: 10,
+  regular: 12,
   small: 8,
   xsmall: 4,
 };

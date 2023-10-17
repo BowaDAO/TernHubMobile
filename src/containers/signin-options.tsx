@@ -59,7 +59,7 @@ const SigninOptions = ({
 
           <AuthCTA
             label="Don't have an account?"
-            cta="Sign up"
+            cta="Create account"
             onPress={() => {
               closeModal();
               openSignupModal();

@@ -1,11 +1,15 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
-import { COLORS, RADIUS } from "../../constants";
+import { COLORS, FONT, GAP, RADIUS, SIZE } from "../../constants";
 
-const InputFrame = () => {
+type Prop = {
+  label: string;
+};
+
+const InputFrame = ({ label }: Prop) => {
   return (
-    <View>
-      <Text>Email</Text>
+    <View style={styles.container}>
+      <Text style={styles.label}>{label} </Text>
       <TextInput style={styles.input} />
     </View>
   );
@@ -20,6 +24,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: RADIUS.small,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: COLORS.purple,
+    height: 52,
+    fontSize: SIZE.lg,
+  },
+  container: {
+    gap: GAP.regular,
+  },
+  label: {
+    fontWeight: "400",
+    fontSize: SIZE.lg,
+    fontFamily: FONT.regular,
   },
 });

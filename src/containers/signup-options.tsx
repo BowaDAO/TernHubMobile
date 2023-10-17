@@ -55,7 +55,7 @@ const SignupOptions = ({
           </View>
 
           <AuthCTA
-            label="Already have an account?"
+            label="Have an account?"
             cta="Sign in"
             onPress={() => {
               closeSignupModal();
