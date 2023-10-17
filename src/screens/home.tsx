@@ -1,7 +1,8 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
-
+import { StyleSheet, View } from "react-native";
+import { Search, JobCard } from "../components";
 import { SigninOptions, SignupOptions } from "../containers";
 import { useModal } from "../hooks";
+import { PADDING } from "../../constants";
 
 const Home = () => {
   const {
@@ -14,10 +15,10 @@ const Home = () => {
   } = useModal();
 
   return (
-    <View>
-      <Pressable onPress={openSignupModal}>
-        <Text>Home</Text>
-      </Pressable>
+    <View style={styles.body}>
+      <Search />
+
+      <JobCard />
 
       <SignupOptions
         closeSignupModal={closeSignupModal}
@@ -33,6 +34,10 @@ const Home = () => {
   );
 };
 
-export default Home;
+const styles = StyleSheet.create({
+  body: {
+    padding: PADDING.normal,
+  },
+});
 
-const styles = StyleSheet.create({});
+export default Home;

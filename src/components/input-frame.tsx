@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
-import { COLORS, FONT, GAP, RADIUS, SIZE } from "../../constants";
+import { COLORS, FONT, GAP, PADDING, RADIUS, SIZE } from "../../constants";
 
 type Prop = {
   label: string;
@@ -20,8 +20,8 @@ export default InputFrame;
 const styles = StyleSheet.create({
   input: {
     width: "100%",
-    paddingVertical: 14,
-    paddingHorizontal: 16,
+    paddingVertical: PADDING.large,
+    paddingHorizontal: PADDING.xlarge,
     borderRadius: RADIUS.small,
     borderWidth: 1,
     borderColor: COLORS.purple,

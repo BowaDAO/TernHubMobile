@@ -37,7 +37,7 @@ const SigninOptions = ({
               <View>
                 <AuthPrompt
                   heading="Sign in"
-                  subheading="continue using ternhub"
+                  subheading="Sign in to continue using ternhub"
                 />
               </View>
             </View>

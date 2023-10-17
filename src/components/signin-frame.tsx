@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { AuthFrame } from "../types/type";
-import { COLORS, FONT, GAP, RADIUS, SIZE } from "../../constants";
+import { COLORS, FONT, GAP, PADDING, RADIUS, SIZE } from "../../constants";
 
 const SigninFrame = ({ icon, label, onPress }: AuthFrame) => {
   return (
@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
     borderColor: COLORS.purple,
     borderWidth: 1,
     borderRadius: RADIUS.normal,
-    paddingVertical: 16,
-    paddingHorizontal: 32,
+    paddingVertical: PADDING.large,
+    paddingHorizontal: PADDING.xlarge,
   },
   icon: {
     height: 30,

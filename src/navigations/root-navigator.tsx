@@ -16,6 +16,7 @@ const RootNavigator = () => {
       screenOptions={{
         headerShown: false,
         headerShadowVisible: false,
+        gestureEnabled: false,
       }}
       screenListeners={{
         focus: () => {

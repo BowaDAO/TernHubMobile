@@ -6,7 +6,15 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { RADIUS, COLORS, SIZE, GAP, FONT, icon } from "../../constants";
+import {
+  RADIUS,
+  COLORS,
+  SIZE,
+  GAP,
+  FONT,
+  icon,
+  PADDING,
+} from "../../constants";
 import { useState } from "react";
 
 type Prop = {
@@ -25,6 +33,7 @@ const PasswordInputFrame = ({ label, value, onChangeText }: Prop) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label} </Text>
+
       <TextInput
         style={styles.input}
         value={value}
@@ -35,7 +44,7 @@ const PasswordInputFrame = ({ label, value, onChangeText }: Prop) => {
 
       <TouchableOpacity style={styles.visibility} onPress={togglePasswordIcon}>
         <Image
-          source={isPasswordVisible ? icon.hidepassword : icon.showpassword}
+          source={isPasswordVisible ? icon.showpassword : icon.hidepassword}
           style={styles.icon}
         />
       </TouchableOpacity>
@@ -46,8 +55,8 @@ const PasswordInputFrame = ({ label, value, onChangeText }: Prop) => {
 const styles = StyleSheet.create({
   input: {
     width: "100%",
-    paddingVertical: 14,
-    paddingHorizontal: 16,
+    paddingVertical: PADDING.large,
+    paddingHorizontal: PADDING.xlarge,
     borderRadius: RADIUS.small,
     borderWidth: 1,
     borderColor: COLORS.purple,
@@ -69,7 +78,7 @@ const styles = StyleSheet.create({
   visibility: {
     position: "absolute",
     right: 10,
-    top: "50%",
+    top: "47%",
   },
 });
 
