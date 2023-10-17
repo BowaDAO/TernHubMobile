@@ -6,3 +6,13 @@ export type AuthFrame = {
   label: string;
   onPress: () => void | NavigationProp<ReactNavigation.RootParamList>;
 };
+
+export type jobType = {
+  id: string;
+  company: string;
+  role: string;
+  logo: ImageSourcePropType;
+  mode: string;
+  time: string;
+  location: string;
+};
