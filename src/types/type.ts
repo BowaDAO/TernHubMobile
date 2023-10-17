@@ -1,7 +1,7 @@
 import { ImageSourcePropType } from "react-native";
 
 export type AuthFrame = {
-  image: ImageSourcePropType;
+  icon: ImageSourcePropType;
   label: string;
   onPress: () => void;
 };

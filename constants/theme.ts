@@ -30,7 +30,7 @@ export const PADDING = {
 };
 
 export const RADIUS = {
-  normal: 8,
+  normal: 10,
   large: 16,
   xlarge: 24,
   full: 100,
@@ -47,4 +47,11 @@ export const GAP = {
   regular: 10,
   small: 8,
   xsmall: 4,
+};
+
+export const FONT = {
+  bold: "FoundersGroteskBold",
+  regular: "FoundersGroteskRegular",
+  medium: "FoundersGroteskMedium",
+  light: "FoundersGroteskLight",
 };

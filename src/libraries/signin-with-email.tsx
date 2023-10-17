@@ -1,14 +1,14 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import SigninFrame from "../components/signin-frame";
+import { icon } from "../../constants";
 
 const SigninWithEmail = () => {
   return (
-    <View>
-      <Text>SigninWithEmail</Text>
-    </View>
+    <SigninFrame
+      icon={icon.google}
+      label="Sign in with Email"
+      onPress={() => {}}
+    />
   );
 };
 
 export default SigninWithEmail;
-
-const styles = StyleSheet.create({});
