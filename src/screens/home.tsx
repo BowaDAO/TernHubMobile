@@ -1,9 +1,8 @@
 import { StyleSheet, View, FlatList, ListRenderItem } from "react-native";
-import { Search, JobCard } from "../components";
+import { JobCard, DormantSearchFrame } from "../components";
 import { SigninOptions, SignupOptions } from "../containers";
 import { useModal } from "../hooks";
 import { GAP, PADDING, icon } from "../../constants";
-import { useState } from "react";
 import { jobType } from "../types/type";
 
 const Home = () => {
@@ -44,6 +43,15 @@ const Home = () => {
       time: "2",
       location: "Lagos, Nigeria",
     },
+    {
+      id: "4",
+      company: "google",
+      role: "backend developer intern",
+      logo: icon.google,
+      mode: "onsite",
+      time: "2",
+      location: "Lagos, Nigeria",
+    },
   ];
 
   const renderItem: ListRenderItem<jobType> = ({ item }) => {
@@ -52,13 +60,14 @@ const Home = () => {
 
   return (
     <View style={styles.body}>
-      <Search />
+      <DormantSearchFrame />
 
       <FlatList
         data={data}
         renderItem={renderItem}
+        keyExtractor={(item) => item.id}
         contentContainerStyle={{ gap: GAP.regular }}
-        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
       />
 
       <SignupOptions
@@ -79,6 +88,7 @@ const Home = () => {
 const styles = StyleSheet.create({
   body: {
     padding: PADDING.normal,
+    gap: GAP.small,
   },
 });
 

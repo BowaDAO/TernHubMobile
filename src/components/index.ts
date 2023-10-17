@@ -4,8 +4,9 @@ import SigninFrame from "./signin-frame";
 import CloseModal from "./close-modal";
 import InputFrame from "./input-frame";
 import PasswordInputFrame from "./password-input-frame";
-import Search from "./search";
+import SearchFrame from "./search-frame";
 import JobCard from "./job-card";
+import DormantSearchFrame from "./dormant-search-frame";
 
 export {
   AuthCTA,
@@ -14,6 +15,7 @@ export {
   CloseModal,
   InputFrame,
   PasswordInputFrame,
-  Search,
+  SearchFrame,
   JobCard,
+  DormantSearchFrame,
 };

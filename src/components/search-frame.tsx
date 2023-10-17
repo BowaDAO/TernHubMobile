@@ -1,27 +1,18 @@
-import {
-  StyleSheet,
-  TextInput,
-  Image,
-  View,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, TextInput, Image, View } from "react-native";
 import { RADIUS, COLORS, SIZE, icon, PADDING } from "../../constants";
 
-const Search = () => {
+const SearchFrame = () => {
   return (
     <View>
-      <TouchableOpacity style={styles.search_icon_wrapper}>
+      <View style={styles.search_icon_wrapper}>
         <Image source={icon.search} style={styles.icon} />
-      </TouchableOpacity>
-      <TextInput
-        style={styles.input}
-        placeholder="What job are you looking for?"
-      />
+      </View>
+      <TextInput style={styles.input} placeholder="Search job title" />
     </View>
   );
 };
 
-export default Search;
+export default SearchFrame;
 
 const styles = StyleSheet.create({
   input: {

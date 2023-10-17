@@ -1,13 +1,20 @@
 import { StyleSheet, Text, View } from "react-native";
+import { PADDING } from "../../constants";
+import { SearchFrame } from "../components";
 
 const Search = () => {
   return (
-    <View>
-      <Text>search</Text>
+    <View style={styles.body}>
+      <SearchFrame />
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  body: {
+    padding: PADDING.normal,
+    // gap: GAP.small,
+  },
+});
 
 export default Search;
