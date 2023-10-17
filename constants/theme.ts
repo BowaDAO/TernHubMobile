@@ -10,6 +10,7 @@ export const COLORS = {
   green: "#048640",
   deepgreen: "#00632D",
   red: "#CE0A0A",
+  border: "#C7C7C7",
 };
 
 export const SIZE = {
@@ -35,6 +36,7 @@ export const RADIUS = {
   xlarge: 24,
   full: 100,
   half: 50,
+  small: 5,
 };
 
 export const GAP = {

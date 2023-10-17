@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { Animated } from "react-native";
 import TabNavigator from "./tab-navigator";
+import { SigninWithEmail, SignupWithEmail } from "../screens";
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ const RootNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        headerShadowVisible: false,
       }}
       screenListeners={{
         focus: () => {
@@ -26,6 +28,24 @@ const RootNavigator = () => {
       }}
     >
       <Stack.Screen name="tab" component={TabNavigator} />
+      <Stack.Screen
+        name="signupwithemail"
+        component={SignupWithEmail}
+        options={{
+          headerShown: true,
+          headerBackTitleVisible: false,
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="signinwithemail"
+        component={SigninWithEmail}
+        options={{
+          headerShown: true,
+          headerBackTitleVisible: false,
+          title: "",
+        }}
+      />
     </Stack.Navigator>
   );
 };

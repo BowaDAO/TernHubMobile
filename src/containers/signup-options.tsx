@@ -1,11 +1,12 @@
 import { StyleSheet, View, Modal, SafeAreaView } from "react-native";
+import { SigninWithFacebook, SigninWithGoogle } from "../libraries";
+import { AuthPrompt, AuthCTA, CloseModal, SigninFrame } from "../components";
+import { GAP, PADDING, icon } from "../../constants";
 import {
-  SignupWithEmail,
-  SigninWithFacebook,
-  SigninWithGoogle,
-} from "../libraries";
-import { AuthPrompt, AuthCTA, CloseModal } from "../components";
-import { GAP, PADDING } from "../../constants";
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from "@react-navigation/native";
 
 type SignupOptionsProp = {
   openModal: () => void;
@@ -18,6 +19,8 @@ const SignupOptions = ({
   closeSignupModal,
   openModal,
 }: SignupOptionsProp) => {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
+
   return (
     <Modal
       visible={signupModalVisible}
@@ -37,9 +40,17 @@ const SignupOptions = ({
             </View>
 
             <View style={styles.button_container}>
-              <SignupWithEmail />
-              <SigninWithFacebook />
-              <SigninWithGoogle />
+              <SigninFrame
+                icon={icon.google}
+                label="Sign up with Email"
+                onPress={() => {
+                  closeSignupModal();
+                  navigation.navigate("signupwithemail");
+                }}
+              />
+              <SigninWithFacebook label="Sign up with Facebook" />
+
+              <SigninWithGoogle label="Sign up with Google" />
             </View>
           </View>
 

@@ -1,14 +1,8 @@
 import SigninFrame from "../components/signin-frame";
 import { icon } from "../../constants";
 
-const SigninWithFacebook = () => {
-  return (
-    <SigninFrame
-      icon={icon.google}
-      label="Sign in with Facebook"
-      onPress={() => {}}
-    />
-  );
+const SigninWithFacebook = ({ label }: { label: string }) => {
+  return <SigninFrame icon={icon.google} label={label} onPress={() => {}} />;
 };
 
 export default SigninWithFacebook;
