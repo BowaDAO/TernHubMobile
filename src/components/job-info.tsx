@@ -14,12 +14,15 @@ const JobInfo = ({ item }: { item: jobType }) => {
             style={styles.logo}
           />
         ) : (
-          <Text>{item.company.substring(0, 1)}</Text>
+          <Text style={styles.alternative_logo}>
+            {item.company.substring(0, 1)}
+          </Text>
         )}
       </View>
 
       <View style={styles.text_wrapper}>
         <Text style={styles.company}>{item.company} </Text>
+
         <Text style={styles.role}>{item.role}</Text>
       </View>
     </View>
@@ -48,6 +51,7 @@ const styles = StyleSheet.create({
   },
   text_wrapper: {
     gap: GAP.xsmall,
+    flexShrink: 1,
   },
   company: {
     fontSize: SIZE.base,
@@ -60,6 +64,10 @@ const styles = StyleSheet.create({
     fontSize: SIZE.lg,
     fontWeight: "600",
     textTransform: "capitalize",
-    color: COLORS.purple,
+  },
+  alternative_logo: {
+    fontSize: SIZE.xxl,
+    fontFamily: FONT.bold,
+    color: COLORS.greyblack,
   },
 });

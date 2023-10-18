@@ -3,7 +3,6 @@ import {
   View,
   FlatList,
   ListRenderItem,
-  Text,
   ActivityIndicator,
   Alert,
 } from "react-native";
@@ -31,6 +30,7 @@ const Home = () => {
   };
 
   const { user } = useSelector((store: RootState) => store.user);
+
   const { jobs, status } = useSelector((store: RootState) => store.job);
 
   return (

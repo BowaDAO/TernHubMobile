@@ -13,7 +13,7 @@ export type jobType = {
   role: string;
   logo: string;
   mode: string;
-  time: string;
+  time: any;
   location: string;
 };
 

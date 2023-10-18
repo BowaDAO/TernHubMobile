@@ -2,9 +2,21 @@ import { StyleSheet, Text } from "react-native";
 import React from "react";
 import { COLORS, FONT, SIZE } from "../../constants";
 import { jobType } from "../types/type";
+import { formatDistanceToNow } from "date-fns";
 
 const JobPostTime = ({ item }: { item: jobType }) => {
-  return <Text style={styles.text}>Posted {item.time}hrs ago</Text>;
+  const timeStamp = item?.time;
+
+  const date = timeStamp.toDate();
+
+  let timeAgo;
+
+  if (timeStamp) {
+    const timePeriod = formatDistanceToNow(date);
+    timeAgo = `${timePeriod?.replace("about", "")} ago`;
+  }
+
+  return <Text style={styles.text}>Posted {timeAgo}</Text>;
 };
 
 export default JobPostTime;

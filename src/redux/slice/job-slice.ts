@@ -31,7 +31,7 @@ export const getJobs = createAsyncThunk("job/getJobs", async () => {
       description: doc.get("jobDescrption"),
       role: doc.get("jobTitle"),
       mode: doc.get("jobMode"),
-      //   time: doc.get("timeStamp"),
+      time: doc.get("timeStamp"),
     }));
 
     return data;

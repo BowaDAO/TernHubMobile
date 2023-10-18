@@ -7,13 +7,11 @@ const JobLocationAndMode = ({ item }: { item: jobType }) => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.location}>
-        <View>
-          <Image
-            source={icon.location}
-            resizeMode="contain"
-            style={styles.icon}
-          />
-        </View>
+        <Image
+          source={icon.location}
+          resizeMode="contain"
+          style={styles.icon}
+        />
 
         <Text style={[styles.base]}>{item.location} </Text>
       </View>
@@ -26,8 +24,8 @@ export default JobLocationAndMode;
 
 const styles = StyleSheet.create({
   icon: {
-    height: 24,
-    width: 24,
+    height: 18,
+    width: 18,
   },
   location: {
     flexDirection: "row",
