@@ -4,13 +4,19 @@ import { COLORS, FONT, GAP, PADDING, RADIUS, SIZE } from "../../constants";
 
 type Prop = {
   label: string;
+  value: string;
+  onChangeText?: (text: string) => void;
 };
 
-const InputFrame = ({ label }: Prop) => {
+const InputFrame = ({ label, value, onChangeText }: Prop) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label} </Text>
-      <TextInput style={styles.input} />
+      <TextInput
+        style={styles.input}
+        value={value}
+        onChangeText={onChangeText}
+      />
     </View>
   );
 };

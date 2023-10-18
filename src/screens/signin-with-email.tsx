@@ -1,21 +1,104 @@
-import { Text, View, SafeAreaView, StyleSheet, Pressable } from "react-native";
-import { InputFrame, AuthPrompt, PasswordInputFrame } from "../components";
+import {
+  Text,
+  View,
+  SafeAreaView,
+  StyleSheet,
+  Pressable,
+  Alert,
+} from "react-native";
+import {
+  InputFrame,
+  AuthPrompt,
+  PasswordInputFrame,
+  Loader,
+} from "../components";
 import { FullButton } from "../components/button";
 import { COLORS, FONT, GAP, PADDING, SIZE } from "../../constants";
 import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../server/firebase/config";
+import { useDispatch } from "react-redux";
+import { signin } from "../redux/slice/user-slice";
+import {
+  useNavigation,
+  NavigationProp,
+  ParamListBase,
+} from "@react-navigation/native";
+import * as SecureStore from "expo-secure-store";
 
 const SigninWithEmail = () => {
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const dispatch = useDispatch();
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+  const canLogin = Boolean(email && password);
+
+  const handleSignin = async () => {
+    setLoading(true);
+
+    await signInWithEmailAndPassword(auth, email, password)
+      .then(async (res) => {
+        dispatch(
+          signin({
+            email: res.user.email,
+            name: res.user.displayName,
+            user_id: res.user.uid,
+            picture: res.user.photoURL,
+          })
+        );
+
+        const token = await res.user.getIdToken();
+
+        await SecureStore.setItemAsync("refreshToken", token);
+
+        navigation.navigate("tab");
+      })
+      .catch((error) => {
+        if (error.code === "auth/invalid-email") {
+          Alert.alert("Please enter a valid email address!");
+        }
+
+        if (error.code === "auth/user-disabled") {
+          Alert.alert("Your account has been disabled");
+        }
+
+        if (error.code === "auth/user-not-found") {
+          Alert.alert(
+            "User not found!",
+            "Please check your credentials and try again"
+          );
+        }
+
+        if (error.code === "auth/wrong-password") {
+          Alert.alert("Incorrect password!");
+        }
+
+        if (error.code === "auth/network-request-failed") {
+          Alert.alert(
+            "Network error!",
+            "Please check your internet connection and try again."
+          );
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
+      {loading && <Loader />}
+
       <AuthPrompt
         heading="Welcome back"
         subheading="Enter your email and password to log in to your account"
       />
 
       <View style={styles.input_container}>
-        <InputFrame label="Email" />
+        <InputFrame label="Email" value={email} onChangeText={setEmail} />
 
         <PasswordInputFrame
           label="Password"
@@ -24,7 +107,7 @@ const SigninWithEmail = () => {
         />
       </View>
 
-      <FullButton label="Sign in" onPress={() => {}} />
+      <FullButton label="Sign in" onPress={handleSignin} disabled={!canLogin} />
 
       <Pressable style={styles.forget_password_container}>
         <Text style={styles.forget_password}>Forget Password?</Text>

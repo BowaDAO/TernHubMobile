@@ -17,7 +17,9 @@ import { useState } from "react";
 const SignupWithEmail = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [profession, setProfession] = useState<string>("");
 
   return (
     <SafeAreaView style={styles.container}>
@@ -27,7 +29,7 @@ const SignupWithEmail = () => {
       />
 
       <View style={styles.input_container}>
-        <InputFrame label="Email" />
+        <InputFrame label="Email" value={email} onChangeText={setEmail} />
 
         <PasswordInputFrame
           label="Password"
@@ -35,7 +37,11 @@ const SignupWithEmail = () => {
           onChangeText={setPassword}
         />
 
-        <InputFrame label="What best describes you?" />
+        <InputFrame
+          label="What best describes you?"
+          value={profession}
+          onChangeText={setProfession}
+        />
       </View>
 
       <FullButton label="Create account" onPress={() => {}} />

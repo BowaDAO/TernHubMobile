@@ -2,6 +2,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Animated } from "react-native";
 import TabNavigator from "./tab-navigator";
 import { SigninWithEmail, SignupWithEmail } from "../screens";
+import { auth } from "../../server/firebase/config";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { signin, signout } from "../redux/slice/user-slice";
 
 const Stack = createStackNavigator();
 
@@ -11,6 +15,26 @@ av.addListener(() => {
 });
 
 const RootNavigator = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const listener = auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(
+          signin({
+            email: user.email,
+            name: user.displayName,
+            user_id: user.uid,
+            picture: user.photoURL,
+          })
+        );
+      } else {
+        dispatch(signout());
+      }
+    });
+    listener();
+  }, []);
+
   return (
     <Stack.Navigator
       screenOptions={{

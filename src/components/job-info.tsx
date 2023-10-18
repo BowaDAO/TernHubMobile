@@ -1,13 +1,21 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
-import { COLORS, FONT, GAP, RADIUS, SIZE, icon } from "../../constants";
+import { COLORS, FONT, GAP, RADIUS, SIZE } from "../../constants";
 import { jobType } from "../types/type";
 
 const JobInfo = ({ item }: { item: jobType }) => {
   return (
     <View style={styles.container}>
       <View style={styles.logo_wrapper}>
-        <Image source={item.logo} resizeMode="contain" style={styles.logo} />
+        {item?.logo ? (
+          <Image
+            source={{ uri: item.logo }}
+            resizeMode="contain"
+            style={styles.logo}
+          />
+        ) : (
+          <Text>{item.company.substring(0, 1)}</Text>
+        )}
       </View>
 
       <View style={styles.text_wrapper}>

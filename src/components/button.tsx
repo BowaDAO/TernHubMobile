@@ -4,16 +4,18 @@ import { COLORS, PADDING, RADIUS, SIZE } from "../../constants";
 type Prop = {
   label: string;
   onPress: () => void;
+  disabled?: boolean | null | undefined;
 };
 
-export const FullButton = ({ label, onPress }: Prop) => {
+export const FullButton = ({ label, onPress, disabled }: Prop) => {
   return (
     <Pressable
       onPress={onPress}
+      disabled={disabled}
       style={{
         paddingVertical: PADDING.large,
         paddingHorizontal: PADDING.xlarge,
-        backgroundColor: COLORS.purple,
+        backgroundColor: disabled ? COLORS.grey : COLORS.purple,
         borderRadius: RADIUS.normal,
         alignItems: "center",
       }}

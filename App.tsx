@@ -2,6 +2,11 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { COLORS } from "./constants";
 import RootNavigator from "./src/navigations/root-navigator";
 import { useFonts } from "expo-font";
+import { Provider } from "react-redux";
+import { store } from "./src/redux/store";
+import { getJobs } from "./src/redux/slice/job-slice";
+
+store.dispatch(getJobs());
 
 const App = () => {
   const MyTheme = {
@@ -23,7 +28,9 @@ const App = () => {
 
   return (
     <NavigationContainer theme={MyTheme}>
-      <RootNavigator />
+      <Provider store={store}>
+        <RootNavigator />
+      </Provider>
     </NavigationContainer>
   );
 };

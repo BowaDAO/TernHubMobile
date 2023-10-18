@@ -7,6 +7,7 @@ import PasswordInputFrame from "./password-input-frame";
 import SearchFrame from "./search-frame";
 import JobCard from "./job-card";
 import DormantSearchFrame from "./dormant-search-frame";
+import Loader from "./loader";
 
 export {
   AuthCTA,
@@ -18,4 +19,5 @@ export {
   SearchFrame,
   JobCard,
   DormantSearchFrame,
+  Loader,
 };
