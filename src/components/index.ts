@@ -8,6 +8,7 @@ import SearchFrame from "./search-frame";
 import JobCard from "./job-card";
 import DormantSearchFrame from "./dormant-search-frame";
 import Loader from "./loader";
+import ForgetPassword from "./forget-password";
 
 export {
   AuthCTA,
@@ -20,4 +21,5 @@ export {
   JobCard,
   DormantSearchFrame,
   Loader,
+  ForgetPassword,
 };

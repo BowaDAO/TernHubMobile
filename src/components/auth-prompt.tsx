@@ -20,6 +20,7 @@ export default AuthPrompt;
 const styles = StyleSheet.create({
   text: {
     color: COLORS.black,
+    textAlign: "center",
   },
   container: {
     alignItems: "center",

@@ -55,8 +55,7 @@ const PasswordInputFrame = ({ label, value, onChangeText }: Prop) => {
 const styles = StyleSheet.create({
   input: {
     width: "100%",
-    paddingVertical: PADDING.large,
-    paddingHorizontal: PADDING.xlarge,
+    padding: PADDING.large,
     borderRadius: RADIUS.small,
     borderWidth: 1,
     borderColor: COLORS.purple,

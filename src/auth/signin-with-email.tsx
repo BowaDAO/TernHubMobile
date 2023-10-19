@@ -1,19 +1,13 @@
-import {
-  Text,
-  View,
-  SafeAreaView,
-  StyleSheet,
-  Pressable,
-  Alert,
-} from "react-native";
+import { View, SafeAreaView, StyleSheet, Alert } from "react-native";
 import {
   InputFrame,
   AuthPrompt,
   PasswordInputFrame,
   Loader,
+  ForgetPassword,
 } from "../components";
 import { FullButton } from "../components/button";
-import { COLORS, FONT, GAP, PADDING, SIZE } from "../../constants";
+import { GAP, PADDING } from "../../constants";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../server/firebase/config";
@@ -32,6 +26,7 @@ const SigninWithEmail = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const dispatch = useDispatch();
+
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
   const canLogin = Boolean(email && password);
@@ -109,9 +104,7 @@ const SigninWithEmail = () => {
 
       <FullButton label="Sign in" onPress={handleSignin} disabled={!canLogin} />
 
-      <Pressable style={styles.forget_password_container}>
-        <Text style={styles.forget_password}>Forget Password?</Text>
-      </Pressable>
+      <ForgetPassword />
     </SafeAreaView>
   );
 };
@@ -123,14 +116,6 @@ const styles = StyleSheet.create({
   container: {
     margin: PADDING.normal,
     gap: GAP.mlarge,
-  },
-  forget_password: {
-    color: COLORS.purple,
-    fontFamily: FONT.regular,
-    fontSize: SIZE.base,
-  },
-  forget_password_container: {
-    alignSelf: "center",
   },
 });
 

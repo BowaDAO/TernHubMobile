@@ -1,10 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import useSignOut from "../hooks/useSignout";
 
 const Account = () => {
+  const { logOut } = useSignOut();
   return (
     <View>
       <Text>Account</Text>
+
+      <Pressable onPress={logOut}>
+        <Text>signout</Text>
+      </Pressable>
     </View>
   );
 };
