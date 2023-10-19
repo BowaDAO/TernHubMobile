@@ -15,7 +15,7 @@ const ResetPassword = () => {
   const [email, setEmail] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const handleResentPassword = async () => {
+  const handleResetPassword = async () => {
     setLoading(true);
 
     await sendPasswordResetEmail(auth, email)
@@ -50,7 +50,7 @@ const ResetPassword = () => {
 
       <FullButton
         label="Submit"
-        onPress={handleResentPassword}
+        onPress={handleResetPassword}
         disabled={!email || loading}
       />
     </View>
