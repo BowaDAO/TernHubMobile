@@ -1,7 +1,12 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { Animated } from "react-native";
 import TabNavigator from "./tab-navigator";
-import { SigninWithEmail, SignupWithEmail, ResetPassword } from "../auth";
+import {
+  SigninWithEmail,
+  SignupWithEmail,
+  ResetPassword,
+  VerifyEmail,
+} from "../auth";
 import { auth } from "../../server/firebase/config";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -77,6 +82,16 @@ const RootNavigator = () => {
       <Stack.Screen
         name="resetpassword"
         component={ResetPassword}
+        options={{
+          headerShown: true,
+          headerBackTitleVisible: false,
+          title: "",
+        }}
+      />
+
+      <Stack.Screen
+        name="verifyemail"
+        component={VerifyEmail}
         options={{
           headerShown: true,
           headerBackTitleVisible: false,

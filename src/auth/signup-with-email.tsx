@@ -19,6 +19,7 @@ import { auth } from "../../server/firebase/config";
 import { useDispatch } from "react-redux";
 import { signin } from "../redux/slice/user-slice";
 import * as SecureStore from "expo-secure-store";
+import { useEmailVerification } from "../hooks";
 
 const SignupWithEmail = () => {
   const [email, setEmail] = useState<string>("");
@@ -32,6 +33,8 @@ const SignupWithEmail = () => {
 
   const canSignup = Boolean(email && password && profession);
 
+  const { sendEmailVerificationCode } = useEmailVerification();
+
   const handleSignup = async () => {
     if (password.length < 6) {
       Alert.alert("Password should be at least 6 characters");
@@ -40,20 +43,13 @@ const SignupWithEmail = () => {
 
       await createUserWithEmailAndPassword(auth, email, password)
         .then(async (res) => {
-          dispatch(
-            signin({
-              email: res.user.email,
-              name: res.user.displayName,
-              user_id: res.user.uid,
-              picture: res.user.photoURL,
-            })
-          );
+          sendEmailVerificationCode();
 
           const token = await res.user.getIdToken();
 
           await SecureStore.setItemAsync("refreshToken", token);
 
-          navigation.navigate("tab");
+          navigation.navigate("verifyemail");
         })
         .catch((error) => {
           if (error.code === "auth/email-already-in-use") {
@@ -111,7 +107,9 @@ const SignupWithEmail = () => {
 
       <FullButton
         label="Create account"
-        onPress={handleSignup}
+        onPress={() => {
+          handleSignup();
+        }}
         disabled={!canSignup}
       />
 

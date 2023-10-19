@@ -19,6 +19,7 @@ import {
   ParamListBase,
 } from "@react-navigation/native";
 import * as SecureStore from "expo-secure-store";
+import { useEmailVerification } from "../hooks";
 
 const SigninWithEmail = () => {
   const [email, setEmail] = useState<string>("");
@@ -31,25 +32,33 @@ const SigninWithEmail = () => {
 
   const canLogin = Boolean(email && password);
 
+  const { sendEmailVerificationCode } = useEmailVerification();
+
   const handleSignin = async () => {
     setLoading(true);
 
     await signInWithEmailAndPassword(auth, email, password)
       .then(async (res) => {
-        dispatch(
-          signin({
-            email: res.user.email,
-            name: res.user.displayName,
-            user_id: res.user.uid,
-            picture: res.user.photoURL,
-          })
-        );
-
         const token = await res.user.getIdToken();
 
         await SecureStore.setItemAsync("refreshToken", token);
 
-        navigation.navigate("tab");
+        if (!res.user.emailVerified) {
+          sendEmailVerificationCode();
+
+          navigation.navigate("verifyemail");
+        } else {
+          dispatch(
+            signin({
+              email: res.user.email,
+              name: res.user.displayName,
+              user_id: res.user.uid,
+              picture: res.user.photoURL,
+            })
+          );
+
+          navigation.navigate("tab");
+        }
       })
       .catch((error) => {
         if (error.code === "auth/invalid-email") {
