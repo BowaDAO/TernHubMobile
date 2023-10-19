@@ -41,7 +41,7 @@ const VerifyEmail = () => {
     <View style={styles.body}>
       <AuthPrompt
         heading="Verify Your Email"
-        subheading="A verificaton link has been sent to your email. Please click on the link to verify your email address"
+        subheading="A verificaton link has been sent to your email. Please click on the link to verify your email address."
       />
 
       <FullButton

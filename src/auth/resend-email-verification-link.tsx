@@ -1,5 +1,4 @@
 import { StyleSheet, Text, Pressable, Alert } from "react-native";
-
 import { COLORS, FONT, SIZE } from "../../constants";
 import { useEmailVerification } from "../hooks";
 

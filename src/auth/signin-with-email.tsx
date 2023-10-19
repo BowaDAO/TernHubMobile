@@ -98,7 +98,7 @@ const SigninWithEmail = () => {
 
       <AuthPrompt
         heading="Welcome back"
-        subheading="Enter your email and password to log in to your account"
+        subheading="Enter your email and password to log in to your account."
       />
 
       <View style={styles.input_container}>

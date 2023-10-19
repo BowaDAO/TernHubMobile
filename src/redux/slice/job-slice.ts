@@ -8,14 +8,6 @@ const initialState = {
   error: null || "",
 };
 
-// id: string;
-// company: string;
-// role: string;
-// logo: ImageSourcePropType;
-// mode: string;
-// time: string;
-// location: string;
-
 export const getJobs = createAsyncThunk("job/getJobs", async () => {
   try {
     const querySnapshot = await getDocs(
@@ -23,7 +15,6 @@ export const getJobs = createAsyncThunk("job/getJobs", async () => {
     );
 
     const data = querySnapshot.docs.map((doc) => ({
-      //   ...doc.data(),
       id: doc.id,
       location: doc.get("companyLocation"),
       logo: doc.get("companyLogo"),
