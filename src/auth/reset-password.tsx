@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native";
 import { InputFrame, AuthPrompt } from "../components";
 import { FullButton } from "../components/button";
 import { useState } from "react";
+import { GAP, PADDING } from "../../constants";
 
 const ResetPassword = () => {
   const [email, setEmail] = useState<string>("");
@@ -29,5 +30,7 @@ export default ResetPassword;
 const styles = StyleSheet.create({
   body: {
     flex: 1,
+    padding: PADDING.normal,
+    gap: GAP.mlarge,
   },
 });

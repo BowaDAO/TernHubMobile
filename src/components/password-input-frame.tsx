@@ -21,9 +21,15 @@ type Prop = {
   label: string;
   value: string;
   onChangeText?: (text: string) => void;
+  placeholder?: string;
 };
 
-const PasswordInputFrame = ({ label, value, onChangeText }: Prop) => {
+const PasswordInputFrame = ({
+  label,
+  value,
+  onChangeText,
+  placeholder,
+}: Prop) => {
   const [isPasswordVisible, setPasswordIsVisible] = useState<Boolean>(false);
 
   const togglePasswordIcon = () => {
@@ -40,6 +46,7 @@ const PasswordInputFrame = ({ label, value, onChangeText }: Prop) => {
         onChangeText={onChangeText}
         secureTextEntry={isPasswordVisible ? false : true}
         textContentType="password"
+        placeholder={placeholder}
       />
 
       <TouchableOpacity style={styles.visibility} onPress={togglePasswordIcon}>

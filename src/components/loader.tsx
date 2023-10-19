@@ -21,16 +21,17 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     left: 0,
-    opacity: 0.5,
+    opacity: 0.8,
     backgroundColor: "black",
   },
   card: {
     height: 100,
     width: 100,
     borderRadius: 10,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.grey,
     alignItems: "center",
     justifyContent: "center",
+    zIndex: 100,
   },
 });
 export default Loader;
