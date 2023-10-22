@@ -19,7 +19,7 @@ export const getJobs = createAsyncThunk("job/getJobs", async () => {
       location: doc.get("companyLocation"),
       logo: doc.get("companyLogo"),
       company: doc.get("companyName"),
-      description: doc.get("jobDescrption"),
+      description: doc.get("jobDescription"),
       role: doc.get("jobTitle"),
       mode: doc.get("jobMode"),
       time: doc.get("timeStamp"),

@@ -5,10 +5,21 @@ import JobLocationAndMode from "./job-location-and-mode";
 import { BookmarkAJob } from "../libraries";
 import { COLORS, GAP, PADDING, RADIUS } from "../../constants";
 import { jobType } from "../types/type";
+import {
+  useNavigation,
+  NavigationProp,
+  ParamListBase,
+} from "@react-navigation/native";
 
 const JobCard = ({ item }: { item: jobType }) => {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate("jobfullinfo", { item });
+  };
+
   return (
-    <Pressable style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress}>
       <JobInfo item={item} />
       <JobLocationAndMode item={item} />
       <View style={styles.C}>

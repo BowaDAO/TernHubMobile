@@ -11,6 +11,7 @@ import { auth } from "../../server/firebase/config";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signin, signout } from "../redux/slice/user-slice";
+import { JobFullInfo } from "../screens";
 
 const Stack = createStackNavigator();
 
@@ -92,6 +93,16 @@ const RootNavigator = () => {
       <Stack.Screen
         name="verifyemail"
         component={VerifyEmail}
+        options={{
+          headerShown: true,
+          headerBackTitleVisible: false,
+          title: "",
+        }}
+      />
+
+      <Stack.Screen
+        name="jobfullinfo"
+        component={JobFullInfo}
         options={{
           headerShown: true,
           headerBackTitleVisible: false,

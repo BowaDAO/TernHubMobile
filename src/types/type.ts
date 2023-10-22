@@ -15,6 +15,7 @@ export type jobType = {
   mode: string;
   time: any;
   location: string;
+  description: string;
 };
 
 export type User = {
@@ -23,4 +24,9 @@ export type User = {
   uid: string;
   photo: ImageSourcePropType;
   refreshToken: string;
+};
+
+export type StackParamList = {
+  Home: { item: jobType };
+  jobfullinfo: { item: jobType };
 };
