@@ -9,11 +9,12 @@ const TabNavigator = () => {
     <Tab.Navigator
       screenOptions={{
         headerShadowVisible: false,
+        headerTitleStyle: { fontSize: SIZE.xxl, fontFamily: FONT.bold },
         tabBarStyle: {
           borderTopWidth: 0,
         },
         tabBarLabelStyle: {
-          fontSize: SIZE.regular,
+          fontSize: SIZE.base,
           fontFamily: FONT.regular,
         },
         tabBarActiveTintColor: COLORS.purple,

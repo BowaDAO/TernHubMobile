@@ -5,5 +5,15 @@ import Courses from "./courses";
 import Search from "./search";
 import Splash from "./splash";
 import JobFullInfo from "./job-full-info";
+import ContactUs from "./contact-us";
 
-export { Home, Account, Bookmarks, Courses, Search, Splash, JobFullInfo };
+export {
+  Home,
+  Account,
+  Bookmarks,
+  Courses,
+  Search,
+  Splash,
+  JobFullInfo,
+  ContactUs,
+};

@@ -11,8 +11,9 @@ import { auth } from "../../server/firebase/config";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signin, signout } from "../redux/slice/user-slice";
-import { JobFullInfo } from "../screens";
+import { JobFullInfo, ContactUs } from "../screens";
 import { jobType } from "../types/type";
+import { SIZE, FONT } from "../../constants";
 
 const Stack = createStackNavigator();
 
@@ -45,9 +46,10 @@ const RootNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false,
         headerShadowVisible: false,
         gestureEnabled: false,
+        headerBackTitleVisible: false,
+        headerTitleStyle: { fontSize: SIZE.xl, fontFamily: FONT.medium },
       }}
       screenListeners={{
         focus: () => {
@@ -59,14 +61,18 @@ const RootNavigator = () => {
         },
       }}
     >
-      <Stack.Screen name="tab" component={TabNavigator} />
+      <Stack.Screen
+        name="tab"
+        component={TabNavigator}
+        options={{
+          headerShown: false,
+        }}
+      />
 
       <Stack.Screen
         name="signupwithemail"
         component={SignupWithEmail}
         options={{
-          headerShown: true,
-          headerBackTitleVisible: false,
           title: "",
         }}
       />
@@ -75,8 +81,6 @@ const RootNavigator = () => {
         name="signinwithemail"
         component={SigninWithEmail}
         options={{
-          headerShown: true,
-          headerBackTitleVisible: false,
           title: "",
         }}
       />
@@ -85,8 +89,6 @@ const RootNavigator = () => {
         name="resetpassword"
         component={ResetPassword}
         options={{
-          headerShown: true,
-          headerBackTitleVisible: false,
           title: "",
         }}
       />
@@ -95,8 +97,6 @@ const RootNavigator = () => {
         name="verifyemail"
         component={VerifyEmail}
         options={{
-          headerShown: true,
-          headerBackTitleVisible: false,
           title: "",
         }}
       />
@@ -105,10 +105,16 @@ const RootNavigator = () => {
         name="jobfullinfo"
         component={JobFullInfo}
         options={({ route }) => ({
-          headerShown: true,
-          headerBackTitleVisible: false,
           title: (route.params as { item: jobType })?.item?.role,
         })}
+      />
+
+      <Stack.Screen
+        name="contactus"
+        component={ContactUs}
+        options={{
+          title: "Contact us",
+        }}
       />
     </Stack.Navigator>
   );

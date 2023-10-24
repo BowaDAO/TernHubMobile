@@ -1,5 +1,5 @@
 import { StyleSheet, Text, Image, View, Pressable } from "react-native";
-import { RADIUS, COLORS, SIZE, icon, PADDING } from "../../constants";
+import { RADIUS, COLORS, SIZE, icon, PADDING, FONT } from "../../constants";
 import {
   useNavigation,
   NavigationProp,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.purple,
     height: 52,
-    fontSize: SIZE.base,
+    justifyContent: "center",
   },
 
   icon: {
@@ -47,10 +47,11 @@ const styles = StyleSheet.create({
   search_icon_wrapper: {
     position: "absolute",
     left: 10,
-    top: 14,
+    top: 10,
   },
   label: {
-    fontSize: SIZE.base,
+    fontSize: SIZE.xl,
     color: COLORS.border,
+    fontFamily: FONT.regular,
   },
 });

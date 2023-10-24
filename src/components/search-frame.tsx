@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput, Image, View } from "react-native";
-import { RADIUS, COLORS, SIZE, icon, PADDING } from "../../constants";
+import { RADIUS, COLORS, SIZE, icon, PADDING, FONT } from "../../constants";
 
 const SearchFrame = () => {
   return (
@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.purple,
     height: 52,
-    fontSize: SIZE.base,
+    fontFamily: FONT.regular,
+    fontSize: SIZE.xl,
   },
 
   icon: {
@@ -34,6 +35,6 @@ const styles = StyleSheet.create({
   search_icon_wrapper: {
     position: "absolute",
     left: 10,
-    top: 14,
+    top: 10,
   },
 });
