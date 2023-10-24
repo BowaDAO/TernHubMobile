@@ -4,5 +4,14 @@ import hidepassword from "../assets/Icons/hidepassword.png";
 import close from "../assets/Icons/close.png";
 import search from "../assets/Icons/search.png";
 import location from "../assets/Icons/location.png";
+import email from "../assets/Icons/email.png";
 
-export default { google, showpassword, close, hidepassword, search, location };
+export default {
+  google,
+  showpassword,
+  close,
+  hidepassword,
+  search,
+  location,
+  email,
+};

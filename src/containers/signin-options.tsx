@@ -44,16 +44,17 @@ const SigninOptions = ({
 
             <View style={styles.button_container}>
               <SigninFrame
-                icon={icon.google}
+                icon={icon.email}
                 label="Sign in with Email"
                 onPress={() => {
                   closeModal();
                   navigation.navigate("signinwithemail");
                 }}
               />
-              <SigninWithFacebook label="Sign in with Facebook" />
 
               <SigninWithGoogle label="Sign in with Google" />
+
+              <SigninWithFacebook label="Sign in with Facebook" />
             </View>
           </View>
 

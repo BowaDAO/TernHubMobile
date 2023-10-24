@@ -55,17 +55,17 @@ const Account = () => {
         <View style={styles.wrapper}>
           <Pressable style={styles.segment}>
             <Text style={styles.text}>Send feedback</Text>
-            <AntDesign name="right" size={16} />
+            <AntDesign name="right" size={16} color={COLORS.lightGrey} />
           </Pressable>
 
           <Pressable style={styles.segment}>
             <Text style={styles.text}>Rate app</Text>
-            <AntDesign name="right" size={16} />
+            <AntDesign name="right" size={16} color={COLORS.lightGrey} />
           </Pressable>
 
           <Pressable style={styles.segment}>
             <Text style={styles.text}>Share app</Text>
-            <AntDesign name="right" size={16} />
+            <AntDesign name="right" size={16} color={COLORS.lightGrey} />
           </Pressable>
         </View>
 
@@ -75,23 +75,23 @@ const Account = () => {
             onPress={() => navigation.navigate("contactus")}
           >
             <Text style={styles.text}>Contact us </Text>
-            <AntDesign name="right" size={16} />
+            <AntDesign name="right" size={16} color={COLORS.lightGrey} />
           </Pressable>
 
           <Pressable style={styles.segment}>
             <Text style={styles.text}>Privacy policy</Text>
-            <AntDesign name="right" size={16} />
+            <AntDesign name="right" size={16} color={COLORS.lightGrey} />
           </Pressable>
 
           <Pressable style={styles.segment}>
             <Text style={styles.text}>Terms of use</Text>
-            <AntDesign name="right" size={16} />
+            <AntDesign name="right" size={16} color={COLORS.lightGrey} />
           </Pressable>
 
           {user && (
             <Pressable style={styles.segment} onPress={logOut}>
               <Text style={styles.text}>Log out</Text>
-              <AntDesign name="right" size={16} />
+              <AntDesign name="right" size={16} color={COLORS.lightGrey} />
             </Pressable>
           )}
         </View>

@@ -15,12 +15,12 @@ import {
 const JobCard = ({ item }: { item: jobType }) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
-  const onPress = () => {
+  const navigateToInfoPage = () => {
     navigation.navigate("jobfullinfo", { item });
   };
 
   return (
-    <Pressable style={styles.container} onPress={onPress}>
+    <Pressable style={styles.container} onPress={navigateToInfoPage}>
       <JobInfo item={item} />
 
       <JobLocationAndMode item={item} />

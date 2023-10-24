@@ -9,7 +9,7 @@ const RefreshController = () => {
 
   const dispatch: DispatchType = useDispatch();
 
-  const onRefresh = useCallback(() => {
+  const refreshScreen = useCallback(() => {
     setRefreshing(true);
 
     dispatch(getJobs());
@@ -19,7 +19,7 @@ const RefreshController = () => {
     }, 3000);
   }, []);
 
-  return <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />;
+  return <RefreshControl refreshing={refreshing} onRefresh={refreshScreen} />;
 };
 
 export default RefreshController;
