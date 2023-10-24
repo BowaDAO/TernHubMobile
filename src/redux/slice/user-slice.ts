@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import * as SecureStore from "expo-secure-store";
+import { User } from "../../types/type";
+
+interface UserType {
+  user: User | null;
+}
 
 const getUser = async () => {
   const token = await SecureStore.getItemAsync("refreshToken");
@@ -12,7 +17,7 @@ const getUser = async () => {
   }
 };
 
-const initialState = {
+const initialState: UserType = {
   user: null,
 };
 

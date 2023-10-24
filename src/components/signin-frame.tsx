@@ -6,6 +6,7 @@ const SigninFrame = ({ icon, label, onPress }: AuthFrame) => {
   return (
     <Pressable onPress={onPress} style={styles.container}>
       <Image source={icon} style={styles.icon} />
+
       <Text style={styles.label}>{label}</Text>
     </Pressable>
   );

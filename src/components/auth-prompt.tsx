@@ -10,6 +10,7 @@ const AuthPrompt = ({ heading, subheading }: AuthPrmoptProp) => {
   return (
     <View style={styles.container}>
       <Text style={[styles.text, styles.heading]}> {heading} </Text>
+
       <Text style={[styles.text, styles.subheading]}>{subheading} </Text>
     </View>
   );

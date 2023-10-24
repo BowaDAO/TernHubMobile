@@ -2,11 +2,13 @@ import { StyleSheet, Text, View, FlatList, ListRenderItem } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { jobType } from "../types/type";
-import { JobCard } from "../components";
+import { JobCard, NoBookMarkedJobs } from "../components";
 import { GAP, PADDING } from "../../constants";
 
 const Bookmarks = () => {
   const { bookmarkedJobs } = useSelector((store: RootState) => store.bookmarks);
+
+  const { user } = useSelector((store: RootState) => store.user);
 
   const renderItem: ListRenderItem<jobType> = ({ item }) => {
     return <JobCard item={item} />;
@@ -14,8 +16,10 @@ const Bookmarks = () => {
 
   return (
     <View style={styles.body}>
-      {bookmarkedJobs.length < 1 ? (
-        <Text>There are no bookmarked jobs</Text>
+      {!user ? (
+        <NoBookMarkedJobs />
+      ) : bookmarkedJobs.length < 1 ? (
+        <NoBookMarkedJobs />
       ) : (
         <FlatList
           data={bookmarkedJobs}

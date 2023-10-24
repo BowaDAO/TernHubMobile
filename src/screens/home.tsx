@@ -4,17 +4,21 @@ import {
   FlatList,
   ListRenderItem,
   ActivityIndicator,
-  Alert,
-  Text,
 } from "react-native";
-import { JobCard, DormantSearchFrame } from "../components";
+import {
+  JobCard,
+  DormantSearchFrame,
+  RefreshController,
+  CustomError,
+} from "../components";
 import { SigninOptions, SignupOptions } from "../containers";
 import { useModal } from "../hooks";
 import { GAP, PADDING } from "../../constants";
 import { jobType } from "../types/type";
 import { FullButton } from "../components/button";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { useSelector, useDispatch } from "react-redux";
+import { DispatchType, RootState } from "../redux/store";
+import { getJobs } from "../redux/slice/job-slice";
 
 const Home = () => {
   const {
@@ -33,6 +37,12 @@ const Home = () => {
   const { user } = useSelector((store: RootState) => store.user);
 
   const { jobs, status } = useSelector((store: RootState) => store.job);
+
+  const dispatch: DispatchType = useDispatch();
+
+  const handleReset = () => {
+    dispatch(getJobs());
+  };
 
   return (
     <View style={styles.body}>
@@ -56,7 +66,10 @@ const Home = () => {
         {status === "loading" ? (
           <ActivityIndicator size={"large"} color={"purple"} />
         ) : status === "failed" ? (
-          <Text>Something went wrong</Text>
+          <CustomError
+            errorMessage="An error has occurred, please try again "
+            handleReset={handleReset}
+          />
         ) : (
           <FlatList
             data={jobs}
@@ -64,6 +77,7 @@ const Home = () => {
             keyExtractor={(item: jobType) => item.id?.toString()}
             contentContainerStyle={{ gap: GAP.regular }}
             showsVerticalScrollIndicator={false}
+            refreshControl={<RefreshController />}
           />
         )}
       </>

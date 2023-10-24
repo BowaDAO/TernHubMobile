@@ -22,9 +22,12 @@ const JobCard = ({ item }: { item: jobType }) => {
   return (
     <Pressable style={styles.container} onPress={onPress}>
       <JobInfo item={item} />
+
       <JobLocationAndMode item={item} />
+
       <View style={styles.C}>
         <JobPostTime item={item} />
+
         <BookmarkAJob item={item} />
       </View>
     </Pressable>

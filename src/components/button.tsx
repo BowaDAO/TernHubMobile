@@ -1,5 +1,5 @@
 import { Pressable, Text } from "react-native";
-import { COLORS, PADDING, RADIUS, SIZE } from "../../constants";
+import { COLORS, FONT, PADDING, RADIUS, SIZE } from "../../constants";
 
 type Prop = {
   label: string;
@@ -21,7 +21,11 @@ export const FullButton = ({ label, onPress, disabled }: Prop) => {
       }}
     >
       <Text
-        style={{ fontSize: SIZE.base, fontWeight: "600", color: COLORS.white }}
+        style={{
+          fontSize: SIZE.lg,
+          color: COLORS.white,
+          fontFamily: FONT.medium,
+        }}
       >
         {label}
       </Text>

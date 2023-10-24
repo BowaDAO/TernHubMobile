@@ -7,6 +7,7 @@ const SearchFrame = () => {
       <View style={styles.search_icon_wrapper}>
         <Image source={icon.search} style={styles.icon} />
       </View>
+
       <TextInput style={styles.input} placeholder="Search job title" />
     </View>
   );

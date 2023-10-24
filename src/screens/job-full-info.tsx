@@ -24,6 +24,7 @@ const JobFullInfo: React.FC<Prop> = ({ route }) => {
       >
         <View style={styles.container}>
           <SingleJobInfoHeader item={item} />
+
           <SingleJobInfoBody item={item} />
         </View>
       </ScrollView>

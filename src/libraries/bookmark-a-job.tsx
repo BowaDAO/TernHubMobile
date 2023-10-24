@@ -1,4 +1,4 @@
-import { Alert, Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
 import { COLORS, FONT, RADIUS, SIZE } from "../../constants";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
@@ -24,7 +24,7 @@ const BookmarkAJob = ({ item }: { item: jobType }) => {
       });
     } else {
       dispatch(bookmarkAJob(item));
-      Toast.show({ type: "success", text1: "Job saved successfully!" });
+      Toast.show({ type: "success", text1: "Job saved!" });
     }
   };
 
@@ -33,7 +33,7 @@ const BookmarkAJob = ({ item }: { item: jobType }) => {
       Toast.show({ type: "error", text1: "Please sign in to perform action" });
     } else {
       dispatch(unBookmarkAJob(item.id));
-      Toast.show({ type: "success", text1: "Job removed successfully!" });
+      Toast.show({ type: "success", text1: "Job removed!" });
     }
   };
 
@@ -67,16 +67,15 @@ export default BookmarkAJob;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.purple,
-    paddingVertical: 12,
+    height: 40,
     paddingHorizontal: 18,
     borderRadius: RADIUS.normal,
     alignItems: "center",
     justifyContent: "center",
   },
   label: {
-    color: COLORS.white,
     fontSize: SIZE.base,
-    fontWeight: "600",
-    fontFamily: FONT.regular,
+    color: COLORS.white,
+    fontFamily: FONT.medium,
   },
 });

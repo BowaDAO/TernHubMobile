@@ -12,6 +12,7 @@ const InputFrame = ({ label, value, onChangeText }: Prop) => {
   return (
     <View style={styles.container}>
       <Text style={styles.label}>{label} </Text>
+
       <TextInput
         style={styles.input}
         value={value}

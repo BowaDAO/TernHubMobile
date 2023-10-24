@@ -1,8 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../../../server/firebase/config";
+import { jobType } from "../../types/type";
 
-const initialState = {
+interface Prop {
+  jobs: jobType[];
+  status: string;
+  error: null | string;
+}
+
+const initialState: Prop = {
   jobs: [],
   status: "idle",
   error: null || "",

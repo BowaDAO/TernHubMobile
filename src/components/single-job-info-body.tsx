@@ -19,6 +19,7 @@ const SingleJobInfoBody = ({ item }: { item: jobType }) => {
   return (
     <View>
       <Text style={styles.description}>Description</Text>
+
       <HTML
         source={{ html: item.description }}
         contentWidth={width}
