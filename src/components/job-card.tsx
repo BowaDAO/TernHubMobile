@@ -3,6 +3,7 @@ import JobInfo from "./job-info";
 import JobPostTime from "./job-post-time";
 import JobLocationAndMode from "./job-location-and-mode";
 import { BookmarkAJob } from "../libraries";
+
 import { COLORS, GAP, PADDING, RADIUS } from "../../constants";
 import { jobType } from "../types/type";
 import {
@@ -24,7 +25,7 @@ const JobCard = ({ item }: { item: jobType }) => {
       <JobLocationAndMode item={item} />
       <View style={styles.C}>
         <JobPostTime item={item} />
-        <BookmarkAJob />
+        <BookmarkAJob item={item} />
       </View>
     </Pressable>
   );

@@ -9,6 +9,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { Splash } from "./src/screens";
 import * as Font from "expo-font";
 import { Alert } from "react-native";
+import Toast from "react-native-toast-message";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -61,6 +62,7 @@ const App = () => {
     <NavigationContainer theme={MyTheme}>
       <Provider store={store}>
         <RootNavigator />
+        <Toast />
       </Provider>
     </NavigationContainer>
   );

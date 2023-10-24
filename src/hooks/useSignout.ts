@@ -7,13 +7,12 @@ import { useDispatch } from "react-redux";
 import { Alert } from "react-native";
 import { auth } from "../../server/firebase/config";
 import { signout } from "../redux/slice/user-slice";
-import { Dispatch } from "../redux/store";
-import { useState } from "react";
+import { DispatchType } from "../redux/store";
 
 const useSignOut = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
-  const dispatch: Dispatch = useDispatch();
+  const dispatch: DispatchType = useDispatch();
 
   const logOut = async () => {
     try {

@@ -1,5 +1,4 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import React from "react";
 import { COLORS, FONT, GAP, SIZE, icon } from "../../constants";
 import { jobType } from "../types/type";
 
@@ -13,9 +12,9 @@ const JobLocationAndMode = ({ item }: { item: jobType }) => {
           style={styles.icon}
         />
 
-        <Text style={[styles.base]}>{item.location} </Text>
+        <Text style={styles.base}>{item?.location} </Text>
       </View>
-      <Text style={[styles.base]}>{item.mode} </Text>
+      <Text style={styles.base}>{item?.mode} </Text>
     </View>
   );
 };

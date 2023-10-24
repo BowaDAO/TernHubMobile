@@ -5,6 +5,7 @@ import {
   ListRenderItem,
   ActivityIndicator,
   Alert,
+  Text,
 } from "react-native";
 import { JobCard, DormantSearchFrame } from "../components";
 import { SigninOptions, SignupOptions } from "../containers";
@@ -55,12 +56,12 @@ const Home = () => {
         {status === "loading" ? (
           <ActivityIndicator size={"large"} color={"purple"} />
         ) : status === "failed" ? (
-          Alert.alert("something went wrong")
+          <Text>Something went wrong</Text>
         ) : (
           <FlatList
             data={jobs}
             renderItem={renderItem}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item: jobType) => item.id?.toString()}
             contentContainerStyle={{ gap: GAP.regular }}
             showsVerticalScrollIndicator={false}
           />

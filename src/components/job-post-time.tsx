@@ -1,5 +1,4 @@
 import { StyleSheet, Text } from "react-native";
-import React from "react";
 import { COLORS, FONT, SIZE } from "../../constants";
 import { jobType } from "../types/type";
 import { formatDistanceToNow } from "date-fns";
@@ -7,7 +6,7 @@ import { formatDistanceToNow } from "date-fns";
 const JobPostTime = ({ item }: { item: jobType }) => {
   const timeStamp = item?.time;
 
-  const date = timeStamp.toDate();
+  const date = timeStamp?.toDate();
 
   let timeAgo;
 

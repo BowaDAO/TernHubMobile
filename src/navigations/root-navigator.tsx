@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signin, signout } from "../redux/slice/user-slice";
 import { JobFullInfo } from "../screens";
+import { jobType } from "../types/type";
 
 const Stack = createStackNavigator();
 
@@ -103,11 +104,11 @@ const RootNavigator = () => {
       <Stack.Screen
         name="jobfullinfo"
         component={JobFullInfo}
-        options={{
+        options={({ route }) => ({
           headerShown: true,
           headerBackTitleVisible: false,
-          title: "",
-        }}
+          title: (route.params as { item: jobType })?.item?.role,
+        })}
       />
     </Stack.Navigator>
   );

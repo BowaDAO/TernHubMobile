@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
 import { COLORS, FONT, GAP, RADIUS, SIZE } from "../../constants";
 import { jobType } from "../types/type";
 
@@ -15,15 +14,15 @@ const JobInfo = ({ item }: { item: jobType }) => {
           />
         ) : (
           <Text style={styles.alternative_logo}>
-            {item.company.substring(0, 1)}
+            {item?.company?.substring(0, 1)}
           </Text>
         )}
       </View>
 
       <View style={styles.text_wrapper}>
-        <Text style={styles.company}>{item.company} </Text>
+        <Text style={styles.company}>{item?.company} </Text>
 
-        <Text style={styles.role}>{item.role}</Text>
+        <Text style={styles.role}>{item?.role}</Text>
       </View>
     </View>
   );
