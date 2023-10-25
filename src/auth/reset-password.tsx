@@ -3,30 +3,31 @@ import { InputFrame, AuthPrompt } from "../components";
 import { FullButton } from "../components/button";
 import { useState } from "react";
 import { GAP, PADDING } from "../../constants";
-import {
-  sendPasswordResetEmail,
-  updatePassword,
-  verifyPasswordResetCode,
-  confirmPasswordReset,
-} from "firebase/auth";
+import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../server/firebase/config";
+import { useHaptic } from "../hooks";
 
 const ResetPassword = () => {
   const [email, setEmail] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+
+  const { triggerVibration } = useHaptic();
 
   const handleResetPassword = async () => {
     setLoading(true);
 
     await sendPasswordResetEmail(auth, email)
       .then(() => {
+        triggerVibration();
         Alert.alert("Password reset link successfully sent to your email!");
       })
       .catch((error) => {
         if (error.code === "auth/invalid-email") {
+          triggerVibration();
           Alert.alert("Invalid email address");
         }
         if (error.code === "auth/too-many-requests") {
+          triggerVibration();
           Alert.alert("Too many requests!");
         }
       })

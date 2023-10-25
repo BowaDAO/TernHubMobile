@@ -12,11 +12,14 @@ import { Alert } from "react-native";
 import ResendEmailVerificationLink from "./resend-email-verification-link";
 import { signin } from "../redux/slice/user-slice";
 import { useDispatch } from "react-redux";
+import { useHaptic } from "../hooks";
 
 const VerifyEmail = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
   const dispatch = useDispatch();
+
+  const { triggerVibration } = useHaptic();
 
   const confirmEmailVerification = () => {
     auth.currentUser?.reload().then(() => {
@@ -32,6 +35,8 @@ const VerifyEmail = () => {
 
         navigation.navigate("tab");
       } else {
+        triggerVibration();
+
         Alert.alert("Please verify your email address to continue!");
       }
     });

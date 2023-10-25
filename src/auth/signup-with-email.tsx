@@ -17,9 +17,9 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../server/firebase/config";
 import { useDispatch } from "react-redux";
-import { signin } from "../redux/slice/user-slice";
 import * as SecureStore from "expo-secure-store";
-import { useEmailVerification } from "../hooks";
+import { useEmailVerification, useHaptic } from "../hooks";
+import Toast from "react-native-toast-message";
 
 const SignupWithEmail = () => {
   const [email, setEmail] = useState<string>("");
@@ -28,6 +28,8 @@ const SignupWithEmail = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const dispatch = useDispatch();
+
+  const { triggerVibration } = useHaptic();
 
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
@@ -53,21 +55,30 @@ const SignupWithEmail = () => {
         })
         .catch((error) => {
           if (error.code === "auth/email-already-in-use") {
+            triggerVibration();
+
             Alert.alert("Email already in use");
           }
           if (error.code === "auth/invalid-email") {
+            triggerVibration();
+
             Alert.alert("Invalid email address");
           }
           if (error.code === "auth/weak-password") {
+            triggerVibration();
+
             Alert.alert(
               "Password not strong enough, please choose a stronger password"
             );
           }
           if (error.code === "auth/network-request-failed") {
-            Alert.alert(
-              "Network error!",
-              "Please check your internet connection and try again."
-            );
+            triggerVibration();
+
+            Toast.show({
+              type: "error",
+              text1: "Network error!",
+              text2: "Please check your internet connection and try again",
+            });
           }
           if (error.code === "auth/permission-denied") {
             Alert.alert("permission denied");

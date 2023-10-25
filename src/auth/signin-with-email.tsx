@@ -65,14 +65,20 @@ const SigninWithEmail = () => {
       })
       .catch((error) => {
         if (error.code === "auth/invalid-email") {
+          triggerVibration();
+
           Alert.alert("Please enter a valid email address!");
         }
 
         if (error.code === "auth/user-disabled") {
+          triggerVibration();
+
           Alert.alert("Your account has been disabled");
         }
 
         if (error.code === "auth/user-not-found") {
+          triggerVibration();
+
           Alert.alert(
             "User not found!",
             "Please check your credentials and try again"
@@ -80,6 +86,8 @@ const SigninWithEmail = () => {
         }
 
         if (error.code === "auth/wrong-password") {
+          triggerVibration();
+
           Alert.alert("Incorrect password!");
         }
 

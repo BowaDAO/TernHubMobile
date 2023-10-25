@@ -1,13 +1,22 @@
 import { StyleSheet, Text, Pressable, Alert } from "react-native";
 import { COLORS, FONT, SIZE } from "../../constants";
-import { useEmailVerification } from "../hooks";
+import { useEmailVerification, useHaptic } from "../hooks";
+import Toast from "react-native-toast-message";
 
 const ResendEmailVerificationLink = () => {
   const { sendEmailVerificationCode } = useEmailVerification();
 
+  const { triggerVibration } = useHaptic();
+
   const onPress = () => {
     sendEmailVerificationCode().then(() => {
-      Alert.alert("Email verification link resent");
+      triggerVibration();
+
+      Toast.show({
+        text1: "Verification link sent",
+        text2:
+          "Email verification link has been successfully sent to your mail",
+      });
     });
   };
 
