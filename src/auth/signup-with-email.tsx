@@ -27,8 +27,6 @@ const SignupWithEmail = () => {
   const [profession, setProfession] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const dispatch = useDispatch();
-
   const { triggerVibration } = useHaptic();
 
   const navigation: NavigationProp<ParamListBase> = useNavigation();

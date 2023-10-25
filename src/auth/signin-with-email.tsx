@@ -21,13 +21,14 @@ import {
 import * as SecureStore from "expo-secure-store";
 import { useEmailVerification, useHaptic } from "../hooks";
 import Toast from "react-native-toast-message";
+import { DispatchType } from "../redux/store";
 
 const SigninWithEmail = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const dispatch = useDispatch();
+  const dispatch: DispatchType = useDispatch();
 
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
@@ -80,7 +81,7 @@ const SigninWithEmail = () => {
           triggerVibration();
 
           Alert.alert(
-            "User not found!",
+            "Incorrect credentials!",
             "Please check your credentials and try again"
           );
         }

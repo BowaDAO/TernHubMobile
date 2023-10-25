@@ -19,15 +19,18 @@ const ResetPassword = () => {
     await sendPasswordResetEmail(auth, email)
       .then(() => {
         triggerVibration();
+
         Alert.alert("Password reset link successfully sent to your email!");
       })
       .catch((error) => {
         if (error.code === "auth/invalid-email") {
           triggerVibration();
+
           Alert.alert("Invalid email address");
         }
         if (error.code === "auth/too-many-requests") {
           triggerVibration();
+
           Alert.alert("Too many requests!");
         }
       })

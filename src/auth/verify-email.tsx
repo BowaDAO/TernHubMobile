@@ -13,11 +13,12 @@ import ResendEmailVerificationLink from "./resend-email-verification-link";
 import { signin } from "../redux/slice/user-slice";
 import { useDispatch } from "react-redux";
 import { useHaptic } from "../hooks";
+import { DispatchType } from "../redux/store";
 
 const VerifyEmail = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
-  const dispatch = useDispatch();
+  const dispatch: DispatchType = useDispatch();
 
   const { triggerVibration } = useHaptic();
 

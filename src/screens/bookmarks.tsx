@@ -16,9 +16,7 @@ const Bookmarks = () => {
 
   return (
     <View style={styles.body}>
-      {!user ? (
-        <NoBookMarkedJobs />
-      ) : bookmarkedJobs.length < 1 ? (
+      {!user || bookmarkedJobs.length < 1 ? (
         <NoBookMarkedJobs />
       ) : (
         <FlatList
