@@ -19,7 +19,8 @@ import {
   ParamListBase,
 } from "@react-navigation/native";
 import * as SecureStore from "expo-secure-store";
-import { useEmailVerification } from "../hooks";
+import { useEmailVerification, useHaptic } from "../hooks";
+import Toast from "react-native-toast-message";
 
 const SigninWithEmail = () => {
   const [email, setEmail] = useState<string>("");
@@ -33,6 +34,8 @@ const SigninWithEmail = () => {
   const canLogin = Boolean(email && password);
 
   const { sendEmailVerificationCode } = useEmailVerification();
+
+  const { triggerVibration } = useHaptic();
 
   const handleSignin = async () => {
     setLoading(true);
@@ -81,10 +84,13 @@ const SigninWithEmail = () => {
         }
 
         if (error.code === "auth/network-request-failed") {
-          Alert.alert(
-            "Network error!",
-            "Please check your internet connection and try again."
-          );
+          triggerVibration();
+
+          Toast.show({
+            type: "error",
+            text1: "Network error!",
+            text2: "Please check your internet connection and try again",
+          });
         }
       })
       .finally(() => {

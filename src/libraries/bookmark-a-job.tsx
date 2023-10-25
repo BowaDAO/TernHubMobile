@@ -6,9 +6,12 @@ import { bookmarkAJob, unBookmarkAJob } from "../redux/slice/bookmarks-slice";
 import { DispatchType } from "../redux/store";
 import { jobType } from "../types/type";
 import Toast from "react-native-toast-message";
+import { useHaptic } from "../hooks";
 
 const BookmarkAJob = ({ item }: { item: jobType }) => {
   const dispatch: DispatchType = useDispatch();
+
+  const { triggerVibration } = useHaptic();
 
   const { user } = useSelector((store: RootState) => store.user);
 
@@ -22,18 +25,22 @@ const BookmarkAJob = ({ item }: { item: jobType }) => {
         type: "error",
         text1: "Please sign in to perform action",
       });
+      triggerVibration();
     } else {
       dispatch(bookmarkAJob(item));
       Toast.show({ type: "success", text1: "Job saved!" });
+      triggerVibration();
     }
   };
 
   const handleUnbookmarkJob = () => {
     if (!user) {
       Toast.show({ type: "error", text1: "Please sign in to perform action" });
+      triggerVibration();
     } else {
       dispatch(unBookmarkAJob(item.id));
       Toast.show({ type: "success", text1: "Job removed!" });
+      triggerVibration();
     }
   };
 

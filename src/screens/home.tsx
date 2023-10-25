@@ -48,20 +48,6 @@ const Home = () => {
     <View style={styles.body}>
       <DormantSearchFrame />
 
-      <View
-        style={{
-          position: "absolute",
-          width: "100%",
-          bottom: 0,
-          zIndex: 100,
-          alignSelf: "center",
-        }}
-      >
-        {(!user || user === null) && (
-          <FullButton label="Sign in" onPress={openModal} />
-        )}
-      </View>
-
       <>
         {status === "loading" ? (
           <ActivityIndicator size={"large"} color={COLORS.purple} />
@@ -81,6 +67,20 @@ const Home = () => {
           />
         )}
       </>
+
+      <View
+        style={{
+          position: "absolute",
+          width: "100%",
+          bottom: 0,
+          zIndex: 100,
+          alignSelf: "center",
+        }}
+      >
+        {(!user || user === null) && (
+          <FullButton label="Sign in" onPress={openModal} />
+        )}
+      </View>
 
       <SignupOptions
         closeSignupModal={closeSignupModal}

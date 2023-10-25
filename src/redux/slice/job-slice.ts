@@ -6,7 +6,7 @@ import { jobType } from "../../types/type";
 interface Prop {
   jobs: jobType[];
   status: string;
-  error: null | string;
+  error: undefined | string;
 }
 
 const initialState: Prop = {
@@ -53,7 +53,7 @@ const jobSlice = createSlice({
       })
       .addCase(getJobs.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message as string;
+        state.error = action.error.message;
       });
   },
 });
