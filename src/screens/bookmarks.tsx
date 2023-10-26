@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, ListRenderItem } from "react-native";
+import { StyleSheet, View, FlatList, ListRenderItem } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { jobType } from "../types/type";

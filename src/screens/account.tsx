@@ -3,8 +3,11 @@ import useSignOut from "../hooks/useSignout";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { COLORS, FONT, GAP, PADDING, SIZE } from "../../constants";
-import { NavigationProp, ParamListBase } from "@react-navigation/native";
-import { useNavigation } from "@react-navigation/native";
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from "@react-navigation/native";
 import { SigninOptions, SignupOptions } from "../containers";
 import { useModal } from "../hooks";
 import { useState } from "react";
