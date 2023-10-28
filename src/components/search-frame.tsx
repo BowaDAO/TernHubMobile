@@ -3,7 +3,7 @@ import { RADIUS, COLORS, SIZE, icon, PADDING, FONT } from "../../constants";
 
 const SearchFrame = () => {
   return (
-    <View>
+    <View style={{ height: 52 }}>
       <View style={styles.search_icon_wrapper}>
         <Image source={icon.search} style={styles.icon} />
       </View>
@@ -23,9 +23,11 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.small,
     borderWidth: 1,
     borderColor: COLORS.purple,
-    height: 52,
+    height: "100%",
     fontFamily: FONT.regular,
     fontSize: SIZE.xl,
+    color: COLORS.greyblack,
+    justifyContent: "center",
   },
 
   icon: {
@@ -35,6 +37,6 @@ const styles = StyleSheet.create({
   search_icon_wrapper: {
     position: "absolute",
     left: 10,
-    top: 10,
+    top: 12,
   },
 });

@@ -7,6 +7,7 @@ import { DispatchType } from "../redux/store";
 import { jobType } from "../types/type";
 import Toast from "react-native-toast-message";
 import { useHaptic } from "../hooks";
+import { getAUserBookmarkedJobs } from "../redux/slice/bookmarks-slice";
 
 const BookmarkAJob = ({ item }: { item: jobType }) => {
   const dispatch: DispatchType = useDispatch();
@@ -19,34 +20,46 @@ const BookmarkAJob = ({ item }: { item: jobType }) => {
 
   const alreadyBookmarkedJobsIds = bookmarkedJobs.map((item) => item.id);
 
+  const { id, ...jobInfo } = item;
+
   const handleBookmarkJob = () => {
     if (!user) {
       Toast.show({
         type: "error",
         text1: "Please sign in to perform action",
       });
+
       triggerVibration();
     } else {
       dispatch(bookmarkAJob(item));
-      Toast.show({ type: "success", text1: "Job saved!" });
+
+      dispatch(getAUserBookmarkedJobs());
+
       triggerVibration();
+
+      Toast.show({ type: "success", text1: "Job saved!" });
     }
   };
 
   const handleUnbookmarkJob = () => {
     if (!user) {
       Toast.show({ type: "error", text1: "Please sign in to perform action" });
+
       triggerVibration();
     } else {
-      dispatch(unBookmarkAJob(item.id));
-      Toast.show({ type: "success", text1: "Job removed!" });
+      dispatch(unBookmarkAJob(id));
+
+      dispatch(getAUserBookmarkedJobs());
+
       triggerVibration();
+
+      Toast.show({ type: "success", text1: "Job removed!" });
     }
   };
 
   return (
     <>
-      {alreadyBookmarkedJobsIds.includes(item.id) ? (
+      {alreadyBookmarkedJobsIds.includes(id) ? (
         <Pressable
           style={[
             styles.container,

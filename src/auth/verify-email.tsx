@@ -29,7 +29,7 @@ const VerifyEmail = () => {
           signin({
             email: auth.currentUser.email,
             name: auth.currentUser.displayName,
-            user_id: auth.currentUser.uid,
+            uid: auth.currentUser.uid,
             picture: auth.currentUser.photoURL,
           })
         );

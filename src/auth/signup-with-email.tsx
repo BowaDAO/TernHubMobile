@@ -16,7 +16,6 @@ import {
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../server/firebase/config";
-import { useDispatch } from "react-redux";
 import * as SecureStore from "expo-secure-store";
 import { useEmailVerification, useHaptic } from "../hooks";
 import Toast from "react-native-toast-message";

@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   search_icon_wrapper: {
     position: "absolute",
     left: 10,
-    top: 10,
+    top: 12,
   },
   label: {
     fontSize: SIZE.xl,

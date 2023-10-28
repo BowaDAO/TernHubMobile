@@ -1,19 +1,14 @@
-import {
-  StyleSheet,
-  View,
-  FlatList,
-  ListRenderItem,
-  ActivityIndicator,
-} from "react-native";
+import { StyleSheet, View, FlatList, ListRenderItem } from "react-native";
 import {
   JobCard,
   DormantSearchFrame,
   RefreshController,
   CustomError,
+  Loading,
 } from "../components";
 import { SigninOptions, SignupOptions } from "../containers";
 import { useModal } from "../hooks";
-import { COLORS, GAP, PADDING } from "../../constants";
+import { GAP, PADDING } from "../../constants";
 import { jobType } from "../types/type";
 import { FullButton } from "../components/button";
 import { useSelector, useDispatch } from "react-redux";
@@ -50,7 +45,7 @@ const Home = () => {
 
       <>
         {status === "loading" ? (
-          <ActivityIndicator size={"large"} color={COLORS.purple} />
+          <Loading />
         ) : status === "failed" ? (
           <CustomError
             errorMessage="An error has occurred, please try again "

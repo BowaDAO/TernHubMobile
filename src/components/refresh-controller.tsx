@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { DispatchType } from "../redux/store";
 import { getJobs } from "../redux/slice/job-slice";
+import { getAUserBookmarkedJobs } from "../redux/slice/bookmarks-slice";
 
 const RefreshController = () => {
   const [refreshing, setRefreshing] = useState(false);
@@ -13,6 +14,8 @@ const RefreshController = () => {
     setRefreshing(true);
 
     dispatch(getJobs());
+
+    dispatch(getAUserBookmarkedJobs());
 
     setTimeout(() => {
       setRefreshing(false);

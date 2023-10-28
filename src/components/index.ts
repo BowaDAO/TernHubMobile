@@ -14,6 +14,7 @@ import SingleJobInfoBody from "./single-job-info-body";
 import NoBookMarkedJobs from "./no-bookmarked-jobs";
 import RefreshController from "./refresh-controller";
 import CustomError from "./custom-error";
+import Loading from "./loading";
 
 export {
   AuthCTA,
@@ -32,4 +33,5 @@ export {
   NoBookMarkedJobs,
   RefreshController,
   CustomError,
+  Loading,
 };

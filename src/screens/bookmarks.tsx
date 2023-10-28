@@ -1,22 +1,54 @@
 import { StyleSheet, View, FlatList, ListRenderItem } from "react-native";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { useEffect, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { DispatchType, RootState } from "../redux/store";
 import { jobType } from "../types/type";
-import { JobCard, NoBookMarkedJobs } from "../components";
+import {
+  CustomError,
+  JobCard,
+  NoBookMarkedJobs,
+  Loading,
+  RefreshController,
+} from "../components";
 import { GAP, PADDING } from "../../constants";
+import { getAUserBookmarkedJobs } from "../redux/slice/bookmarks-slice";
+import { useFocusEffect } from "@react-navigation/native";
 
 const Bookmarks = () => {
-  const { bookmarkedJobs } = useSelector((store: RootState) => store.bookmarks);
+  const dispatch: DispatchType = useDispatch();
+
+  const { bookmarkedJobs, status } = useSelector(
+    (store: RootState) => store.bookmarks
+  );
+
+  console.log(bookmarkedJobs.length);
 
   const { user } = useSelector((store: RootState) => store.user);
 
-  const renderItem: ListRenderItem<jobType> = ({ item }) => {
-    return <JobCard item={item} />;
-  };
+  useFocusEffect(
+    useCallback(() => {
+      if (status === "idle") {
+        dispatch(getAUserBookmarkedJobs());
+      }
+    }, [user])
+  );
+
+  const renderItem: ListRenderItem<jobType> = ({ item }) => (
+    <JobCard item={item} />
+  );
 
   return (
     <View style={styles.body}>
-      {!user || bookmarkedJobs.length < 1 ? (
+      {!user ? (
+        <NoBookMarkedJobs />
+      ) : status === "loading" ? (
+        <Loading />
+      ) : status === "failed" ? (
+        <CustomError
+          errorMessage="Something went wrong, try again"
+          handleReset={() => dispatch(getAUserBookmarkedJobs())}
+        />
+      ) : bookmarkedJobs.length < 1 ? (
         <NoBookMarkedJobs />
       ) : (
         <FlatList
@@ -25,6 +57,7 @@ const Bookmarks = () => {
           keyExtractor={(item: jobType) => item.id?.toString()}
           contentContainerStyle={{ gap: GAP.regular }}
           showsVerticalScrollIndicator={false}
+          refreshControl={<RefreshController />}
         />
       )}
     </View>

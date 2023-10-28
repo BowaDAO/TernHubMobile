@@ -56,7 +56,7 @@ const SigninWithEmail = () => {
             signin({
               email: res.user.email,
               name: res.user.displayName,
-              user_id: res.user.uid,
+              uid: res.user.uid,
               picture: res.user.photoURL,
             })
           );
