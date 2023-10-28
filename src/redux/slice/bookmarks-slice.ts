@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { jobType } from "../../types/type";
+import { jobType, JobToSaveType, BookmarksType } from "../../types/type";
 import { PayloadAction } from "@reduxjs/toolkit";
 import {
   setDoc,
@@ -13,12 +13,6 @@ import {
 import { db } from "../../../server/firebase/config";
 import { RootState } from "../store";
 
-interface BookmarksType {
-  bookmarkedJobs: jobType[];
-  status: string;
-  error: any;
-}
-
 const initialState: BookmarksType = {
   bookmarkedJobs: [],
   status: "idle",
@@ -27,8 +21,8 @@ const initialState: BookmarksType = {
 
 export const bookmarkAJob = createAsyncThunk(
   "bookmarks/bookmarkAJob",
-  async (data: jobType, { getState }) => {
-    const { id, ...jobInfo } = data;
+  async (item: JobToSaveType, { getState }) => {
+    const { id, ...jobInfo } = item;
 
     const state = getState() as RootState;
 

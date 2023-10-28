@@ -30,3 +30,20 @@ export type StackParamList = {
   Home: { item: jobType };
   jobfullinfo: { item: jobType };
 };
+
+export type JobToSaveType = {
+  id: string;
+  companyName: string;
+  companyLogo: string;
+  companyLocation: string;
+  jobDescription: string;
+  jobTitle: string;
+  jobMode: string;
+  timeStamp: string;
+};
+
+export interface BookmarksType {
+  bookmarkedJobs: jobType[];
+  status: string;
+  error: any;
+}

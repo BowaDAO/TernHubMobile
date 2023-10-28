@@ -21,8 +21,6 @@ const Bookmarks = () => {
     (store: RootState) => store.bookmarks
   );
 
-  console.log(bookmarkedJobs.length);
-
   const { user } = useSelector((store: RootState) => store.user);
 
   useFocusEffect(

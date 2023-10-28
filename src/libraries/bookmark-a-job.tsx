@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text } from "react-native";
 import { COLORS, FONT, RADIUS, SIZE } from "../../constants";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
-import { bookmarkAJob, unBookmarkAJob } from "../redux/slice/bookmarks-slice";
+import { unBookmarkAJob, bookmarkAJob } from "../redux/slice/bookmarks-slice";
 import { DispatchType } from "../redux/store";
 import { jobType } from "../types/type";
 import Toast from "react-native-toast-message";
@@ -20,7 +20,17 @@ const BookmarkAJob = ({ item }: { item: jobType }) => {
 
   const alreadyBookmarkedJobsIds = bookmarkedJobs.map((item) => item.id);
 
-  const { id, ...jobInfo } = item;
+  const id = item?.id;
+
+  const newItem = {
+    companyName: item.company,
+    companyLogo: item.logo,
+    companyLocation: item.location,
+    jobDescription: item.description,
+    jobTitle: item.role,
+    jobMode: item.mode,
+    timeStamp: item.time,
+  };
 
   const handleBookmarkJob = () => {
     if (!user) {
@@ -31,7 +41,7 @@ const BookmarkAJob = ({ item }: { item: jobType }) => {
 
       triggerVibration();
     } else {
-      dispatch(bookmarkAJob(item));
+      dispatch(bookmarkAJob({ id, ...newItem }));
 
       dispatch(getAUserBookmarkedJobs());
 
@@ -59,7 +69,11 @@ const BookmarkAJob = ({ item }: { item: jobType }) => {
 
   return (
     <>
-      {alreadyBookmarkedJobsIds.includes(id) ? (
+      {!user || !alreadyBookmarkedJobsIds.includes(id) ? (
+        <Pressable style={[styles.container]} onPress={handleBookmarkJob}>
+          <Text style={styles.label}>Save</Text>
+        </Pressable>
+      ) : (
         <Pressable
           style={[
             styles.container,
@@ -72,10 +86,6 @@ const BookmarkAJob = ({ item }: { item: jobType }) => {
           onPress={handleUnbookmarkJob}
         >
           <Text style={[styles.label, { color: COLORS.purple }]}>Unsave</Text>
-        </Pressable>
-      ) : (
-        <Pressable style={[styles.container]} onPress={handleBookmarkJob}>
-          <Text style={styles.label}>Save</Text>
         </Pressable>
       )}
     </>

@@ -22,6 +22,7 @@ import * as SecureStore from "expo-secure-store";
 import { useEmailVerification, useHaptic } from "../hooks";
 import Toast from "react-native-toast-message";
 import { DispatchType } from "../redux/store";
+import { getAUserBookmarkedJobs } from "../redux/slice/bookmarks-slice";
 
 const SigninWithEmail = () => {
   const [email, setEmail] = useState<string>("");
@@ -60,6 +61,8 @@ const SigninWithEmail = () => {
               picture: res.user.photoURL,
             })
           );
+
+          dispatch(getAUserBookmarkedJobs());
 
           navigation.navigate("tab");
         }
