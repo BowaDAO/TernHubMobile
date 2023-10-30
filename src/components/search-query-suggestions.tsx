@@ -7,7 +7,10 @@ import {
   ParamListBase,
 } from "@react-navigation/native";
 import { DispatchType } from "../redux/store";
-import { getJobsByUserQuery } from "../redux/slice/job-slice";
+import {
+  getJobsByUserQuery,
+  setRecentSearches,
+} from "../redux/slice/job-slice";
 
 type PropType = {
   suggestedSearchQueries: string[];
@@ -29,6 +32,7 @@ const SearchQuerySuggestions = ({ suggestedSearchQueries }: PropType) => {
               onPress={() => {
                 dispatch(getJobsByUserQuery(searchQuery)),
                   navigation.navigate("searchresult", { searchQuery });
+                dispatch(setRecentSearches(searchQuery));
               }}
               style={styles.search_term}
             >

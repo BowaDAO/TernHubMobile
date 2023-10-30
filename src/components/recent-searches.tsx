@@ -8,7 +8,10 @@ import {
 } from "@react-navigation/native";
 import { DispatchType } from "../redux/store";
 import { getJobsByUserQuery } from "../redux/slice/job-slice";
-import { removeRecentSearchTerm } from "../redux/slice/job-slice";
+import {
+  removeRecentSearchTerm,
+  setRecentSearches,
+} from "../redux/slice/job-slice";
 
 type PropType = {
   recentSearches: string[];
@@ -37,6 +40,7 @@ const RecentSearches = ({ recentSearches }: PropType) => {
                 onPress={() => {
                   dispatch(getJobsByUserQuery(searchQuery)),
                     navigation.navigate("searchresult", { searchQuery });
+                  dispatch(setRecentSearches(searchQuery));
                 }}
               >
                 <Text style={styles.text}>{searchQuery}</Text>
