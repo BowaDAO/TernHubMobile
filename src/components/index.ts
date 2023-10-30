@@ -15,6 +15,8 @@ import NoBookMarkedJobs from "./no-bookmarked-jobs";
 import RefreshController from "./refresh-controller";
 import CustomError from "./custom-error";
 import Loading from "./loading";
+import SearchQuerySuggestions from "./search-query-suggestions";
+import RecentSearches from "./recent-searches";
 
 export {
   AuthCTA,
@@ -34,4 +36,6 @@ export {
   RefreshController,
   CustomError,
   Loading,
+  SearchQuerySuggestions,
+  RecentSearches,
 };

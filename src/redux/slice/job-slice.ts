@@ -15,6 +15,7 @@ interface InitialJobStateType {
   status: string;
   error: undefined | string;
   queriedJobs: jobType[];
+  recentSearches: string[];
 }
 
 const initialState: InitialJobStateType = {
@@ -22,6 +23,7 @@ const initialState: InitialJobStateType = {
   status: "idle",
   error: null || "",
   queriedJobs: [],
+  recentSearches: [],
 };
 
 export const getJobs = createAsyncThunk("job/getJobs", async () => {
@@ -76,7 +78,16 @@ export const getJobsByUserQuery = createAsyncThunk(
 const jobSlice = createSlice({
   name: "job",
   initialState,
-  reducers: {},
+  reducers: {
+    setRecentSearches: (state, action) => {
+      state.recentSearches.push(action.payload);
+    },
+    removeRecentSearchTerm: (state, action) => {
+      state.recentSearches = state.recentSearches.filter(
+        (item) => item !== action.payload
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getJobs.pending, (state, action) => {
@@ -103,5 +114,7 @@ const jobSlice = createSlice({
       });
   },
 });
+
+export const { setRecentSearches, removeRecentSearchTerm } = jobSlice.actions;
 
 export default jobSlice.reducer;
