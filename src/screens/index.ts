@@ -6,6 +6,8 @@ import Search from "./search";
 import Splash from "./splash";
 import JobFullInfo from "./job-full-info";
 import ContactUs from "./contact-us";
+import SendFeedback from "./send-feedback";
+import SearchResult from "./search-result";
 
 export {
   Home,
@@ -16,4 +18,6 @@ export {
   Splash,
   JobFullInfo,
   ContactUs,
+  SendFeedback,
+  SearchResult,
 };

@@ -56,7 +56,10 @@ const Account = () => {
         </View>
 
         <View style={styles.wrapper}>
-          <Pressable style={styles.segment}>
+          <Pressable
+            style={styles.segment}
+            onPress={() => navigation.navigate("sendfeedback")}
+          >
             <Text style={styles.text}>Send feedback</Text>
             <AntDesign name="right" size={16} color={COLORS.lightGrey} />
           </Pressable>

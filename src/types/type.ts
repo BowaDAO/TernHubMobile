@@ -29,6 +29,7 @@ export type User = {
 export type StackParamList = {
   Home: { item: jobType };
   jobfullinfo: { item: jobType };
+  searchresult: { searchQuery: string };
 };
 
 export type JobToSaveType = {

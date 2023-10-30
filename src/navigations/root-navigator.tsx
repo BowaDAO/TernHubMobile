@@ -11,7 +11,7 @@ import { auth } from "../../server/firebase/config";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signin, signout } from "../redux/slice/user-slice";
-import { JobFullInfo, ContactUs } from "../screens";
+import { JobFullInfo, ContactUs, SendFeedback, SearchResult } from "../screens";
 import { jobType } from "../types/type";
 import { SIZE, FONT } from "../../constants";
 
@@ -115,6 +115,22 @@ const RootNavigator = () => {
         options={{
           title: "Contact us",
         }}
+      />
+
+      <Stack.Screen
+        name="sendfeedback"
+        component={SendFeedback}
+        options={{
+          title: "Feedback",
+        }}
+      />
+
+      <Stack.Screen
+        name="searchresult"
+        component={SearchResult}
+        options={({ route }) => ({
+          title: (route.params as { searchQuery: string })?.searchQuery,
+        })}
       />
     </Stack.Navigator>
   );

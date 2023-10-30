@@ -28,7 +28,7 @@ const Bookmarks = () => {
       if (status === "idle") {
         dispatch(getAUserBookmarkedJobs());
       }
-    }, [user])
+    }, [user, dispatch])
   );
 
   const renderItem: ListRenderItem<jobType> = ({ item }) => (
