@@ -32,9 +32,9 @@ const Search = () => {
 
   const handleUserSearchResult = () => {
     if (searchQuery) {
-      dispatch(getJobsByUserQuery(searchQuery));
-
       navigation.navigate("searchresult", { searchQuery });
+
+      dispatch(getJobsByUserQuery(searchQuery));
 
       dispatch(setRecentSearches(searchQuery));
     }
@@ -63,7 +63,7 @@ const Search = () => {
 const styles = StyleSheet.create({
   body: {
     padding: PADDING.normal,
-    gap: GAP.regular,
+    gap: GAP.medium,
   },
   search_term: {
     paddingVertical: 10,

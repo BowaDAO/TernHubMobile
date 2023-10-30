@@ -8,7 +8,7 @@ const SendFeedback = () => {
     <ScrollView>
       <View style={styles.body}>
         <AuthPrompt
-          heading="Send Your Feedback"
+          heading="Send A Feedback"
           subheading="Tell us what new features you would love to see/use on the app"
         />
 

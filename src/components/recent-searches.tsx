@@ -22,48 +22,47 @@ const RecentSearches = ({ recentSearches }: PropType) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
   return (
-    <View>
-      <Text style={styles.text}>Recent searches</Text>
+    <>
+      {recentSearches.length > 0 && (
+        <View style={styles.container}>
+          <Text style={styles.heading}>Recent searches</Text>
 
-      <View style={{ gap: GAP.small }}>
-        {recentSearches.slice(0, 10).map((searchQuery, index) => {
-          return (
-            <View
-              key={index.toString()}
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Pressable
-                onPress={() => {
-                  dispatch(getJobsByUserQuery(searchQuery)),
-                    navigation.navigate("searchresult", { searchQuery });
-                  dispatch(setRecentSearches(searchQuery));
-                }}
-              >
-                <Text style={styles.text}>{searchQuery}</Text>
-              </Pressable>
+          <View style={{ gap: GAP.small }}>
+            {recentSearches.slice(0, 10).map((searchQuery, index) => {
+              return (
+                <View key={index.toString()} style={styles.search_term}>
+                  <Pressable
+                    onPress={() => {
+                      dispatch(getJobsByUserQuery(searchQuery)),
+                        navigation.navigate("searchresult", { searchQuery });
+                      dispatch(setRecentSearches(searchQuery));
+                    }}
+                  >
+                    <Text style={styles.text}>{searchQuery}</Text>
+                  </Pressable>
 
-              <Pressable
-                onPress={() => dispatch(removeRecentSearchTerm(searchQuery))}
-              >
-                <Image
-                  source={icon.times}
-                  style={{
-                    height: 20,
-                    width: 20,
-                    tintColor: COLORS.lightGrey,
-                  }}
-                  resizeMode="contain"
-                />
-              </Pressable>
-            </View>
-          );
-        })}
-      </View>
-    </View>
+                  <Pressable
+                    onPress={() =>
+                      dispatch(removeRecentSearchTerm(searchQuery))
+                    }
+                  >
+                    <Image
+                      source={icon.times}
+                      style={{
+                        height: 20,
+                        width: 20,
+                        tintColor: COLORS.lightGrey,
+                      }}
+                      resizeMode="contain"
+                    />
+                  </Pressable>
+                </View>
+              );
+            })}
+          </View>
+        </View>
+      )}
+    </>
   );
 };
 
@@ -74,8 +73,19 @@ const styles = StyleSheet.create({
     fontSize: SIZE.lg,
     fontFamily: FONT.regular,
     textTransform: "capitalize",
+    color: COLORS.lightGrey,
   },
   search_term: {
     paddingVertical: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  heading: {
+    fontFamily: FONT.bold,
+    fontSize: SIZE.lg,
+  },
+  container: {
+    gap: GAP.small,
   },
 });

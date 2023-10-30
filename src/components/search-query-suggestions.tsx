@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
-import { SIZE, FONT } from "../../constants";
+import { SIZE, FONT, GAP, COLORS } from "../../constants";
 import { useDispatch } from "react-redux";
 import {
   useNavigation,
@@ -21,10 +21,10 @@ const SearchQuerySuggestions = ({ suggestedSearchQueries }: PropType) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
   return (
-    <View>
-      <Text>Suggestions</Text>
+    <View style={styles.container}>
+      <Text style={styles.heading}>Suggestions</Text>
 
-      <View>
+      <View style={{ gap: GAP.small }}>
         {suggestedSearchQueries.slice(0, 10).map((searchQuery, index) => {
           return (
             <Pressable
@@ -52,8 +52,16 @@ const styles = StyleSheet.create({
     fontSize: SIZE.lg,
     fontFamily: FONT.regular,
     textTransform: "capitalize",
+    color: COLORS.lightGrey,
   },
   search_term: {
     paddingVertical: 10,
+  },
+  heading: {
+    fontFamily: FONT.bold,
+    fontSize: SIZE.lg,
+  },
+  container: {
+    gap: GAP.small,
   },
 });
