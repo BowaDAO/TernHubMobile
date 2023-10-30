@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
 import { DispatchType } from "../redux/store";
 import { useDispatch } from "react-redux";
-import { getAUserBookmarkedJobs } from "../redux/slice/bookmarks-slice";
 import { RefreshControl } from "react-native";
+import { getJobs } from "../redux/slice/job-slice";
 
 const AllJobsRefreshController = () => {
   const [refreshing, setRefreshing] = useState(false);
@@ -12,7 +12,7 @@ const AllJobsRefreshController = () => {
   const refreshScreen = useCallback(() => {
     setRefreshing(true);
 
-    dispatch(getAUserBookmarkedJobs());
+    dispatch(getJobs());
 
     setTimeout(() => {
       setRefreshing(false);

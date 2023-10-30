@@ -1,10 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
-import { SIZE, FONT } from "../../constants";
+import { StyleSheet, Text, View, Image } from "react-native";
+import { SIZE, FONT, icon, PADDING } from "../../constants";
 
 const Courses = () => {
   return (
     <View style={styles.body}>
-      <Text style={styles.text}>Coming Soon!</Text>
+      <Image
+        source={icon.comingsoon}
+        resizeMode="contain"
+        style={{ height: 300, width: 300, marginTop: 150 }}
+      />
+
+      <Text style={styles.text}>
+        We are working hard to bring you this exciting feature! Stay tuned!
+      </Text>
     </View>
   );
 };
@@ -13,11 +21,12 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    padding: PADDING.normal,
   },
   text: {
     fontSize: SIZE.xl,
     fontFamily: FONT.regular,
+    textAlign: "center",
   },
 });
 
