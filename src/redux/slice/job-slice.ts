@@ -3,13 +3,13 @@ import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../../../server/firebase/config";
 import { jobType } from "../../types/type";
 
-interface Prop {
+interface InitialJobStateType {
   jobs: jobType[];
   status: string;
   error: undefined | string;
 }
 
-const initialState: Prop = {
+const initialState: InitialJobStateType = {
   jobs: [],
   status: "idle",
   error: null || "",

@@ -1,5 +1,5 @@
 import { StyleSheet, View, FlatList, ListRenderItem } from "react-native";
-import { useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { DispatchType, RootState } from "../redux/store";
 import { jobType } from "../types/type";

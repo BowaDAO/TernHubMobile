@@ -22,7 +22,7 @@ const Account = () => {
   const { openSignupModal, closeSignupModal, signupModalVisible, openModal } =
     useModal();
 
-  const { user } = useSelector((store: RootState) => store.user);
+  const { user } = useSelector((state: RootState) => state.user);
 
   const { logOut } = useSignOut();
 
