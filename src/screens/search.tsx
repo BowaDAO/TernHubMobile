@@ -1,16 +1,15 @@
-import { StyleSheet, View, Text, Pressable, Image } from "react-native";
-import { PADDING, GAP, icon, COLORS, FONT, SIZE } from "../../constants";
+import { StyleSheet, View, ScrollView } from "react-native";
+import { PADDING, GAP, FONT, SIZE } from "../../constants";
 import {
   SearchFrame,
   SearchQuerySuggestions,
   RecentSearches,
 } from "../components";
 import { FullButton } from "../components/button";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   getJobsByUserQuery,
   setRecentSearches,
-  removeRecentSearchTerm,
 } from "../redux/slice/job-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { DispatchType, RootState } from "../redux/store";
@@ -20,7 +19,6 @@ import {
   ParamListBase,
 } from "@react-navigation/native";
 import { suggestedSearchQueries } from "../../constants/data";
-import { ScrollView } from "react-native-gesture-handler";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
