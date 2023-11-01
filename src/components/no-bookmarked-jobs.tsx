@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
 import { SIZE, FONT } from "../../constants";
 
-const NoBookMarkedJobs = () => {
+const NoBookMarkedJobs = ({ message }: { message: string }) => {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text style={styles.text}>There are no bookmarked jobs</Text>
+      <Text style={styles.text}>{message} </Text>
     </View>
   );
 };

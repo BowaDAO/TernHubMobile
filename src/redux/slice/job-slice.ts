@@ -87,6 +87,9 @@ const jobSlice = createSlice({
         (item) => item !== action.payload
       );
     },
+    getJobByQuery: (state, action) => {
+      state.queriedJobs = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -115,6 +118,7 @@ const jobSlice = createSlice({
   },
 });
 
-export const { setRecentSearches, removeRecentSearchTerm } = jobSlice.actions;
+export const { setRecentSearches, removeRecentSearchTerm, getJobByQuery } =
+  jobSlice.actions;
 
 export default jobSlice.reducer;

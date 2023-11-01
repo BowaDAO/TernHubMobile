@@ -30,37 +30,40 @@ const RecentSearches = ({ recentSearches }: PropType) => {
           <Text style={styles.heading}>Recent searches</Text>
 
           <View style={{ gap: GAP.small }}>
-            {uniqueRecentSearches.slice(0, 10).map((searchQuery, index) => {
-              return (
-                <View key={index.toString()} style={styles.search_term}>
-                  <Pressable
-                    onPress={() => {
-                      dispatch(getJobsByUserQuery(searchQuery)),
-                        navigation.navigate("searchresult", { searchQuery });
-                      dispatch(setRecentSearches(searchQuery));
-                    }}
-                  >
-                    <Text style={styles.text}>{searchQuery}</Text>
-                  </Pressable>
-
-                  <Pressable
-                    onPress={() =>
-                      dispatch(removeRecentSearchTerm(searchQuery))
-                    }
-                  >
-                    <Image
-                      source={icon.times}
-                      style={{
-                        height: 20,
-                        width: 20,
-                        tintColor: COLORS.lightGrey,
+            {uniqueRecentSearches
+              .slice(0, 6)
+              .reverse()
+              .map((searchQuery, index) => {
+                return (
+                  <View key={index.toString()} style={styles.search_term}>
+                    <Pressable
+                      onPress={() => {
+                        dispatch(getJobsByUserQuery(searchQuery)),
+                          navigation.navigate("searchresult", { searchQuery });
+                        dispatch(setRecentSearches(searchQuery));
                       }}
-                      resizeMode="contain"
-                    />
-                  </Pressable>
-                </View>
-              );
-            })}
+                    >
+                      <Text style={styles.text}>{searchQuery}</Text>
+                    </Pressable>
+
+                    <Pressable
+                      onPress={() =>
+                        dispatch(removeRecentSearchTerm(searchQuery))
+                      }
+                    >
+                      <Image
+                        source={icon.times}
+                        style={{
+                          height: 20,
+                          width: 20,
+                          tintColor: COLORS.lightGrey,
+                        }}
+                        resizeMode="contain"
+                      />
+                    </Pressable>
+                  </View>
+                );
+              })}
           </View>
         </View>
       )}

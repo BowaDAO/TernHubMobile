@@ -30,7 +30,7 @@ const SearchQuerySuggestions = ({
       {loading ? (
         <Loading />
       ) : (
-        suggestedSearchQueries.length > 1 && (
+        suggestedSearchQueries.length > 0 && (
           <View style={styles.container}>
             <Text style={styles.heading}>You may be looking for:</Text>
 

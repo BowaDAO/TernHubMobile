@@ -38,7 +38,7 @@ const Bookmarks = () => {
   return (
     <View style={styles.body}>
       {!user ? (
-        <NoBookMarkedJobs />
+        <NoBookMarkedJobs message="There are no bookmarked jobs" />
       ) : status === "loading" ? (
         <Loading />
       ) : status === "failed" ? (
@@ -47,7 +47,7 @@ const Bookmarks = () => {
           handleReset={() => dispatch(getAUserBookmarkedJobs())}
         />
       ) : bookmarkedJobs.length < 1 ? (
-        <NoBookMarkedJobs />
+        <NoBookMarkedJobs message="There are no bookmarked jobs" />
       ) : (
         <FlatList
           data={bookmarkedJobs}

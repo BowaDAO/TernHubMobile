@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import {
   getJobsByUserQuery,
   setRecentSearches,
+  getJobByQuery,
 } from "../redux/slice/job-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { DispatchType, RootState } from "../redux/store";
@@ -32,33 +33,57 @@ const Search = () => {
   const dispatch: DispatchType = useDispatch();
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
-  const handleUserSearchResult = () => {
-    if (searchQuery) {
-      navigation.navigate("searchresult", { searchQuery });
+  // const handleUserSearchResult = () => {
+  //   if (searchQuery) {
+  //     navigation.navigate("searchresult", { searchQuery });
 
-      dispatch(getJobsByUserQuery(searchQuery));
+  //     dispatch(getJobsByUserQuery(searchQuery));
+
+  //     dispatch(setRecentSearches(searchQuery));
+  //   }
+  // };
+
+  const handleSearch = () => {
+    if (searchQuery) {
+      const value = searchQuery.toLowerCase();
+
+      const results = [];
+
+      for (const i in jobs) {
+        let res = jobs[i].role.toLowerCase();
+
+        if (res.includes(value)) {
+          results.push(jobs[i]);
+        }
+      }
+
+      dispatch(getJobByQuery(results));
+
+      navigation.navigate("searchresult", { searchQuery });
 
       dispatch(setRecentSearches(searchQuery));
     }
   };
 
-  let value = searchQuery.toLowerCase();
-
   useEffect(() => {
     if (searchQuery) {
+      const value = searchQuery.toLowerCase();
+
+      const suggestedQueries = [];
+
       for (const key in jobs) {
         let result = jobs[key].role.toLowerCase();
 
-        if (result.indexOf(value) !== -1) {
-          setSuggestedSearchQueries((prevSuggestions) => {
-            return [...prevSuggestions, jobs[key].role];
-          });
+        if (result.includes(value)) {
+          suggestedQueries.push(jobs[key].role);
         }
+
+        setSuggestedSearchQueries(suggestedQueries);
       }
     } else {
       setSuggestedSearchQueries([]);
     }
-  }, [searchQuery]);
+  }, [searchQuery, jobs]);
 
   const uniqueSuggestedSearchQueries = [...new Set(suggestedSearchQueries)];
 
@@ -67,7 +92,7 @@ const Search = () => {
       <View style={styles.body}>
         <SearchFrame value={searchQuery} onChangeText={setSearchQuery} />
 
-        <FullButton label="Search job" onPress={handleUserSearchResult} />
+        <FullButton label="Search job" onPress={handleSearch} />
 
         <SearchQuerySuggestions
           suggestedSearchQueries={uniqueSuggestedSearchQueries}
