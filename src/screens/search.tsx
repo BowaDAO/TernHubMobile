@@ -6,7 +6,7 @@ import {
   RecentSearches,
 } from "../components";
 import { FullButton } from "../components/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   getJobsByUserQuery,
   setRecentSearches,
@@ -18,12 +18,16 @@ import {
   NavigationProp,
   ParamListBase,
 } from "@react-navigation/native";
-import { suggestedSearchQueries } from "../../constants/data";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [suggestedSearchQueries, setSuggestedSearchQueries] = useState<
+    string[]
+  >([]);
+  const [suggestedSearchQueriesLoading, setSuggestedSearchQueriesLoading] =
+    useState<boolean>(false);
 
-  const { recentSearches } = useSelector((state: RootState) => state.job);
+  const { recentSearches, jobs } = useSelector((state: RootState) => state.job);
 
   const dispatch: DispatchType = useDispatch();
   const navigation: NavigationProp<ParamListBase> = useNavigation();
@@ -38,18 +42,36 @@ const Search = () => {
     }
   };
 
+  let value = searchQuery.toLowerCase();
+
+  useEffect(() => {
+    if (searchQuery) {
+      for (const key in jobs) {
+        let result = jobs[key].role.toLowerCase();
+
+        if (result.indexOf(value) !== -1) {
+          setSuggestedSearchQueries((prevSuggestions) => {
+            return [...prevSuggestions, jobs[key].role];
+          });
+        }
+      }
+    } else {
+      setSuggestedSearchQueries([]);
+    }
+  }, [searchQuery]);
+
+  const uniqueSuggestedSearchQueries = [...new Set(suggestedSearchQueries)];
+
   return (
     <ScrollView>
       <View style={styles.body}>
         <SearchFrame value={searchQuery} onChangeText={setSearchQuery} />
 
-        <FullButton
-          label="Search job"
-          onPress={() => handleUserSearchResult()}
-        />
+        <FullButton label="Search job" onPress={handleUserSearchResult} />
 
         <SearchQuerySuggestions
-          suggestedSearchQueries={suggestedSearchQueries}
+          suggestedSearchQueries={uniqueSuggestedSearchQueries}
+          loading={suggestedSearchQueriesLoading}
         />
 
         <RecentSearches recentSearches={recentSearches} />

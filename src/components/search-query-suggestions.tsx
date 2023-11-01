@@ -11,37 +11,50 @@ import {
   getJobsByUserQuery,
   setRecentSearches,
 } from "../redux/slice/job-slice";
+import Loading from "./loading";
 
 type PropType = {
   suggestedSearchQueries: string[];
+  loading: boolean;
 };
 
-const SearchQuerySuggestions = ({ suggestedSearchQueries }: PropType) => {
+const SearchQuerySuggestions = ({
+  suggestedSearchQueries,
+  loading,
+}: PropType) => {
   const dispatch: DispatchType = useDispatch();
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Suggestions</Text>
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        suggestedSearchQueries.length > 1 && (
+          <View style={styles.container}>
+            <Text style={styles.heading}>You may be looking for:</Text>
 
-      <View style={{ gap: GAP.small }}>
-        {suggestedSearchQueries.slice(0, 10).map((searchQuery, index) => {
-          return (
-            <Pressable
-              key={index.toString()}
-              onPress={() => {
-                dispatch(getJobsByUserQuery(searchQuery)),
-                  navigation.navigate("searchresult", { searchQuery });
-                dispatch(setRecentSearches(searchQuery));
-              }}
-              style={styles.search_term}
-            >
-              <Text style={styles.text}>{searchQuery}</Text>
-            </Pressable>
-          );
-        })}
-      </View>
-    </View>
+            <View style={{ gap: GAP.small }}>
+              {suggestedSearchQueries.slice(0, 10).map((searchQuery, index) => {
+                return (
+                  <Pressable
+                    key={index.toString()}
+                    onPress={() => {
+                      dispatch(getJobsByUserQuery(searchQuery)),
+                        navigation.navigate("searchresult", { searchQuery });
+                      dispatch(setRecentSearches(searchQuery));
+                    }}
+                    style={styles.search_term}
+                  >
+                    <Text style={styles.text}>{searchQuery}</Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
+        )
+      )}
+    </>
   );
 };
 
@@ -58,7 +71,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   heading: {
-    fontFamily: FONT.bold,
+    fontFamily: FONT.medium,
     fontSize: SIZE.lg,
   },
   container: {

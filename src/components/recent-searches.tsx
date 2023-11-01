@@ -21,6 +21,8 @@ const RecentSearches = ({ recentSearches }: PropType) => {
   const dispatch: DispatchType = useDispatch();
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
+  const uniqueRecentSearches = [...new Set(recentSearches)];
+
   return (
     <>
       {recentSearches.length > 0 && (
@@ -28,7 +30,7 @@ const RecentSearches = ({ recentSearches }: PropType) => {
           <Text style={styles.heading}>Recent searches</Text>
 
           <View style={{ gap: GAP.small }}>
-            {recentSearches.slice(0, 10).map((searchQuery, index) => {
+            {uniqueRecentSearches.slice(0, 10).map((searchQuery, index) => {
               return (
                 <View key={index.toString()} style={styles.search_term}>
                   <Pressable
@@ -82,7 +84,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   heading: {
-    fontFamily: FONT.bold,
+    fontFamily: FONT.medium,
     fontSize: SIZE.lg,
   },
   container: {
