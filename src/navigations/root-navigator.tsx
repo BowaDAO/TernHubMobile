@@ -129,7 +129,8 @@ const RootNavigator = () => {
         name="searchresult"
         component={SearchResult}
         options={({ route }) => ({
-          title: (route.params as { searchQuery: string })?.searchQuery,
+          // title: (route.params as { searchQuery: string })?.searchQuery,
+          title: "",
         })}
       />
     </Stack.Navigator>

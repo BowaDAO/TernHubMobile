@@ -34,14 +34,16 @@ const SearchQuerySuggestions = ({
           <View style={styles.container}>
             <Text style={styles.heading}>You may be looking for:</Text>
 
-            <View style={{ gap: GAP.small }}>
+            <View>
               {suggestedSearchQueries.slice(0, 10).map((searchQuery, index) => {
                 return (
                   <Pressable
                     key={index.toString()}
                     onPress={() => {
                       dispatch(getJobsByUserQuery(searchQuery)),
-                        navigation.navigate("searchresult", { searchQuery });
+                        navigation.navigate("searchresult", {
+                          searchQuery,
+                        });
                       dispatch(setRecentSearches(searchQuery));
                     }}
                     style={styles.search_term}
