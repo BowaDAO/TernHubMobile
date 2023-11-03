@@ -1,14 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  collection,
-  getDocs,
-  query,
-  orderBy,
-  where,
-  startAt,
-} from "firebase/firestore";
+import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
 import { db } from "../../../server/firebase/config";
 import { jobType } from "../../types/type";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const getUserRecentSearchesFromAsyncStorage = async (): Promise<string[]> => {
+  const recentSearchesString = await AsyncStorage.getItem("userRecentSearches");
+
+  if (recentSearchesString) {
+    const recentSearchesArray: string[] = JSON.parse(recentSearchesString);
+    return recentSearchesArray;
+  }
+
+  return [];
+};
 
 interface InitialJobStateType {
   jobs: jobType[];
@@ -23,7 +28,7 @@ const initialState: InitialJobStateType = {
   status: "idle",
   error: null || "",
   queriedJobs: [],
-  recentSearches: [],
+  recentSearches: getUserRecentSearchesFromAsyncStorage(),
 };
 
 export const getJobs = createAsyncThunk("job/getJobs", async () => {

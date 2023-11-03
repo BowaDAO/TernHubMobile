@@ -19,6 +19,7 @@ import {
   NavigationProp,
   ParamListBase,
 } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -42,6 +43,10 @@ const Search = () => {
   //     dispatch(setRecentSearches(searchQuery));
   //   }
   // };
+
+  useEffect(() => {
+    AsyncStorage.setItem("userRecentSearches", JSON.stringify(recentSearches));
+  }, [recentSearches]);
 
   const handleSearch = () => {
     if (searchQuery) {
