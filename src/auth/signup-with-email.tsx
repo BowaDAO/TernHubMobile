@@ -34,6 +34,11 @@ const SignupWithEmail = () => {
 
   const { sendEmailVerificationCode } = useEmailVerification();
 
+  const displayError = ({ message }: { message: string }) => {
+    triggerVibration();
+    Alert.alert(`${message}`);
+  };
+
   const handleSignup = async () => {
     if (password.length < 6) {
       Alert.alert("Password should be at least 6 characters");
@@ -52,21 +57,16 @@ const SignupWithEmail = () => {
         })
         .catch((error) => {
           if (error.code === "auth/email-already-in-use") {
-            triggerVibration();
-
-            Alert.alert("Email already in use");
+            displayError({ message: "Email address already in use" });
           }
           if (error.code === "auth/invalid-email") {
-            triggerVibration();
-
-            Alert.alert("Invalid email address");
+            displayError({ message: "Invalid email address" });
           }
           if (error.code === "auth/weak-password") {
-            triggerVibration();
-
-            Alert.alert(
-              "Password not strong enough, please choose a stronger password"
-            );
+            displayError({
+              message:
+                "Password not strong enough, please choose a stronger password",
+            });
           }
           if (error.code === "auth/network-request-failed") {
             triggerVibration();

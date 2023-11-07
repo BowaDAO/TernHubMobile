@@ -1,4 +1,8 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  AsyncThunkAction,
+} from "@reduxjs/toolkit";
 import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
 import { db } from "../../../server/firebase/config";
 import { jobType } from "../../types/type";
@@ -15,6 +19,8 @@ const getUserRecentSearchesFromAsyncStorage = async (): Promise<string[]> => {
   return [];
 };
 
+const recentSearchesData = getUserRecentSearchesFromAsyncStorage();
+
 interface InitialJobStateType {
   jobs: jobType[];
   status: string;
@@ -28,7 +34,7 @@ const initialState: InitialJobStateType = {
   status: "idle",
   error: null || "",
   queriedJobs: [],
-  recentSearches: getUserRecentSearchesFromAsyncStorage(),
+  recentSearches: [],
 };
 
 export const getJobs = createAsyncThunk("job/getJobs", async () => {

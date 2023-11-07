@@ -39,6 +39,11 @@ const SigninWithEmail = () => {
 
   const { triggerVibration } = useHaptic();
 
+  const displayError = ({ message }: { message: string }) => {
+    triggerVibration();
+    Alert.alert(`${message}`);
+  };
+
   const handleSignin = async () => {
     setLoading(true);
 
@@ -69,30 +74,19 @@ const SigninWithEmail = () => {
       })
       .catch((error) => {
         if (error.code === "auth/invalid-email") {
-          triggerVibration();
-
-          Alert.alert("Please enter a valid email address!");
+          displayError({ message: "Please enter a valid email address!" });
         }
 
         if (error.code === "auth/user-disabled") {
-          triggerVibration();
-
-          Alert.alert("Your account has been disabled");
+          displayError({ message: "Your account has been disabled" });
         }
 
         if (error.code === "auth/user-not-found") {
-          triggerVibration();
-
-          Alert.alert(
-            "Incorrect credentials!",
-            "Please check your credentials and try again"
-          );
+          displayError({ message: "Incorrect credentials!" });
         }
 
         if (error.code === "auth/wrong-password") {
-          triggerVibration();
-
-          Alert.alert("Incorrect password!");
+          displayError({ message: "Incorrect password!" });
         }
 
         if (error.code === "auth/network-request-failed") {
