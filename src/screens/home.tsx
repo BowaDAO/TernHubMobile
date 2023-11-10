@@ -77,19 +77,21 @@ const Home = () => {
         )}
       </View>
 
-      <SignupOptions
-        closeSignupModal={closeSignupModal}
-        signupModalVisible={signupModalVisible}
-        openModal={openModal}
-      />
-
-      {(!user || user === null) && (
-        <SigninOptions
-          modalVisible={modalVisible}
-          closeModal={closeModal}
-          openSignupModal={openSignupModal}
+      <>
+        <SignupOptions
+          closeSignupModal={closeSignupModal}
+          signupModalVisible={signupModalVisible}
+          openModal={openModal}
         />
-      )}
+
+        {(!user || user === null) && (
+          <SigninOptions
+            modalVisible={modalVisible}
+            closeModal={closeModal}
+            openSignupModal={openSignupModal}
+          />
+        )}
+      </>
     </View>
   );
 };

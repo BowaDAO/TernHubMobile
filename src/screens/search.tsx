@@ -45,7 +45,14 @@ const Search = () => {
   // };
 
   useEffect(() => {
-    AsyncStorage.setItem("userRecentSearches", JSON.stringify(recentSearches));
+    const SaveUserecentSearchesToStorage = async () => {
+      await AsyncStorage.setItem(
+        "userRecentSearches",
+        JSON.stringify(recentSearches)
+      );
+    };
+
+    SaveUserecentSearchesToStorage();
   }, [recentSearches]);
 
   const handleSearch = () => {
