@@ -27,10 +27,10 @@ const VerifyEmail = () => {
       if (auth.currentUser?.emailVerified) {
         dispatch(
           signin({
-            email: auth.currentUser.email,
-            name: auth.currentUser.displayName,
-            uid: auth.currentUser.uid,
-            picture: auth.currentUser.photoURL,
+            email: auth.currentUser?.email,
+            name: auth.currentUser?.displayName,
+            uid: auth.currentUser?.uid,
+            picture: auth.currentUser?.photoURL,
           })
         );
 

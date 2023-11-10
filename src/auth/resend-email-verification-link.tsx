@@ -8,7 +8,7 @@ const ResendEmailVerificationLink = () => {
 
   const { triggerVibration } = useHaptic();
 
-  const onPress = () => {
+  const handleSendEmailVerificationLink = () => {
     sendEmailVerificationCode().then(() => {
       triggerVibration();
 
@@ -21,7 +21,10 @@ const ResendEmailVerificationLink = () => {
   };
 
   return (
-    <Pressable style={styles.forget_password_container} onPress={onPress}>
+    <Pressable
+      style={styles.forget_password_container}
+      onPress={handleSendEmailVerificationLink}
+    >
       <Text style={styles.forget_password}>
         Resent email verification link?
       </Text>

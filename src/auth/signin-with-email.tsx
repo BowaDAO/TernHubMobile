@@ -60,10 +60,10 @@ const SigninWithEmail = () => {
         } else {
           dispatch(
             signin({
-              email: res.user.email,
-              name: res.user.displayName,
-              uid: res.user.uid,
-              picture: res.user.photoURL,
+              email: res.user?.email,
+              name: res.user?.displayName,
+              uid: res.user?.uid,
+              picture: res.user?.photoURL,
             })
           );
 
