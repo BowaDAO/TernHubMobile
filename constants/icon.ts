@@ -17,6 +17,7 @@ import bookmarkinactive from "../assets/Icons/bookmark-inactive.png";
 import accountactive from "../assets/Icons/account-active.png";
 import accountinactive from "../assets/Icons/account-inactive.png";
 import times from "../assets/Icons/times.png";
+import facebook from "../assets/Icons/facebook.png";
 
 export default {
   google,
@@ -38,4 +39,5 @@ export default {
   accountactive,
   accountinactive,
   times,
+  facebook,
 };
