@@ -59,15 +59,18 @@ const SignupWithEmail = () => {
           if (error.code === "auth/email-already-in-use") {
             displayError({ message: "Email address already in use" });
           }
+
           if (error.code === "auth/invalid-email") {
             displayError({ message: "Invalid email address" });
           }
+
           if (error.code === "auth/weak-password") {
             displayError({
               message:
                 "Password not strong enough, please choose a stronger password",
             });
           }
+
           if (error.code === "auth/network-request-failed") {
             triggerVibration();
 
@@ -77,6 +80,7 @@ const SignupWithEmail = () => {
               text2: "Please check your internet connection and try again",
             });
           }
+
           if (error.code === "auth/permission-denied") {
             Alert.alert("permission denied");
           }
