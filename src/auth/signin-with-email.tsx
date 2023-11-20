@@ -123,7 +123,11 @@ const SigninWithEmail = () => {
         />
       </View>
 
-      <FullButton label="Sign in" onPress={handleSignin} disabled={!canLogin} />
+      <FullButton
+        label="Sign in"
+        onPress={handleSignin}
+        disabled={!canLogin || loading}
+      />
 
       <ForgetPassword />
     </SafeAreaView>

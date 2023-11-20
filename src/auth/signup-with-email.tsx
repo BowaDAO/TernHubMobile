@@ -122,7 +122,7 @@ const SignupWithEmail = () => {
         onPress={() => {
           handleSignup();
         }}
-        disabled={!canSignup}
+        disabled={!canSignup || loading}
       />
 
       <AuthCTA
