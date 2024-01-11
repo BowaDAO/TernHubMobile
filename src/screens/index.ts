@@ -8,6 +8,7 @@ import JobFullInfo from "./job-full-info";
 import ContactUs from "./contact-us";
 import SendFeedback from "./send-feedback";
 import SearchResult from "./search-result";
+import WebViewScreen from "./web-view";
 
 export {
   Home,
@@ -20,4 +21,5 @@ export {
   ContactUs,
   SendFeedback,
   SearchResult,
+  WebViewScreen,
 };

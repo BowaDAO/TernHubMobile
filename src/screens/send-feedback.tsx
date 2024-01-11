@@ -12,9 +12,9 @@ const SendFeedback = () => {
           subheading="Tell us what new features you would love to see/use on the app"
         />
 
-        <InputFrame label="Name" value="" />
+        <InputFrame label="Name" />
 
-        <InputFrame label="Email" value="" />
+        <InputFrame label="Email" />
 
         <View style={styles.container}>
           <Text style={styles.label}>Message </Text>
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     padding: PADDING.large,
     borderRadius: RADIUS.small,
     borderWidth: 1,
-    borderColor: COLORS.purple,
+    borderColor: COLORS.black,
     height: 350,
     fontSize: SIZE.lg,
   },

@@ -15,7 +15,7 @@ const ForgetPassword = () => {
 
   return (
     <Pressable style={styles.forget_password_container} onPress={onPress}>
-      <Text style={styles.forget_password}>Forget Password?</Text>
+      <Text style={styles.forget_password}>Forgot Password?</Text>
     </Pressable>
   );
 };
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   forget_password: {
     color: COLORS.purple,
     fontFamily: FONT.regular,
-    fontSize: SIZE.base,
+    fontSize: SIZE.lg,
   },
   forget_password_container: {
     alignSelf: "center",

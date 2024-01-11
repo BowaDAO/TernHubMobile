@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     fontFamily: FONT.bold,
   },
   subheading: {
-    fontSize: SIZE.base,
+    fontSize: SIZE.lg,
     fontFamily: FONT.regular,
   },
 });

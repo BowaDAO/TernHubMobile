@@ -19,8 +19,10 @@ export type jobType = {
 };
 
 export type User = {
-  email: string;
   name: string;
+  email: string;
+  password: string;
+  profession: string;
   uid: string;
   photo: ImageSourcePropType;
   refreshToken: string;
@@ -30,6 +32,7 @@ export type StackParamList = {
   Home: { item: jobType };
   jobfullinfo: { item: jobType };
   searchresult: { searchQuery: string };
+  webview: { url: string };
 };
 
 export type JobToSaveType = {

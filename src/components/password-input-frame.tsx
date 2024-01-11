@@ -19,17 +19,11 @@ import { useState } from "react";
 
 type Prop = {
   label: string;
-  value: string;
   onChangeText?: (text: string) => void;
   placeholder?: string;
 };
 
-const PasswordInputFrame = ({
-  label,
-  value,
-  onChangeText,
-  placeholder,
-}: Prop) => {
+const PasswordInputFrame = ({ label, onChangeText, placeholder }: Prop) => {
   const [isPasswordVisible, setPasswordIsVisible] = useState<Boolean>(false);
 
   const togglePasswordIcon = () => {
@@ -42,7 +36,6 @@ const PasswordInputFrame = ({
 
       <TextInput
         style={styles.input}
-        value={value}
         onChangeText={onChangeText}
         secureTextEntry={isPasswordVisible ? false : true}
         textContentType="password"
@@ -65,7 +58,7 @@ const styles = StyleSheet.create({
     padding: PADDING.large,
     borderRadius: RADIUS.small,
     borderWidth: 1,
-    borderColor: COLORS.purple,
+    borderColor: COLORS.black,
     height: 52,
     fontSize: SIZE.lg,
   },

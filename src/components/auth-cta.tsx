@@ -24,13 +24,13 @@ const AuthCTA = ({ label, cta, onPress }: AuthCTAProp) => {
 const styles = StyleSheet.create({
   label: {
     color: COLORS.black,
-    fontSize: SIZE.base,
+    fontSize: SIZE.lg,
     fontFamily: FONT.regular,
   },
   cta: {
     color: COLORS.purple,
     fontFamily: FONT.bold,
-    fontSize: SIZE.base,
+    fontSize: SIZE.lg,
   },
   container: {
     alignItems: "center",

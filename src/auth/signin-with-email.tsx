@@ -23,11 +23,25 @@ import { useEmailVerification, useHaptic } from "../hooks";
 import Toast from "react-native-toast-message";
 import { DispatchType } from "../redux/store";
 import { getAUserBookmarkedJobs } from "../redux/slice/bookmarks-slice";
+import { Linking } from "react-native";
+
+const initialState = {
+  email: "",
+  password: "",
+};
 
 const SigninWithEmail = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [userLoginData, setUserLoginData] = useState(initialState);
   const [loading, setLoading] = useState<boolean>(false);
+
+  const onChangeFormText = (name: string, value: string) => {
+    setUserLoginData((userLoginData) => ({
+      ...userLoginData,
+      [name]: value,
+    }));
+  };
+
+  const { email, password } = userLoginData;
 
   const dispatch: DispatchType = useDispatch();
 
@@ -114,12 +128,14 @@ const SigninWithEmail = () => {
       />
 
       <View style={styles.input_container}>
-        <InputFrame label="Email" value={email} onChangeText={setEmail} />
+        <InputFrame
+          label="Email"
+          onChangeText={(text) => onChangeFormText("email", text)}
+        />
 
         <PasswordInputFrame
           label="Password"
-          value={password}
-          onChangeText={setPassword}
+          onChangeText={(text) => onChangeFormText("password", text)}
         />
       </View>
 

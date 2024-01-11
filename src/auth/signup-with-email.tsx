@@ -20,11 +20,25 @@ import * as SecureStore from "expo-secure-store";
 import { useEmailVerification, useHaptic } from "../hooks";
 import Toast from "react-native-toast-message";
 
+const initialState = {
+  name: "",
+  password: "",
+  profession: "",
+  email: "",
+};
+
 const SignupWithEmail = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [profession, setProfession] = useState<string>("");
+  const [userSignupData, setUserSignupData] = useState(initialState);
   const [loading, setLoading] = useState<boolean>(false);
+
+  const onChangeFormText = (name: string, value: string) => {
+    setUserSignupData((userSignupData) => ({
+      ...userSignupData,
+      [name]: value,
+    }));
+  };
+
+  const { email, password, profession } = userSignupData;
 
   const { triggerVibration } = useHaptic();
 
@@ -101,19 +115,25 @@ const SignupWithEmail = () => {
       />
 
       <View style={styles.input_container}>
-        <InputFrame label="Email" value={email} onChangeText={setEmail} />
+        <InputFrame
+          label="Full name"
+          onChangeText={(text) => onChangeFormText("password", text)}
+        />
+
+        <InputFrame
+          label="Email"
+          onChangeText={(text) => onChangeFormText("email", text)}
+        />
 
         <PasswordInputFrame
           label="Password"
-          value={password}
-          onChangeText={setPassword}
+          onChangeText={(text) => onChangeFormText("password", text)}
           placeholder="At least 6 characters"
         />
 
         <InputFrame
           label="What best describes you?"
-          value={profession}
-          onChangeText={setProfession}
+          onChangeText={(text) => onChangeFormText("profession", text)}
         />
       </View>
 
@@ -126,7 +146,7 @@ const SignupWithEmail = () => {
       />
 
       <AuthCTA
-        label="Have an account?"
+        label="Already have an account?"
         cta="Sign in"
         onPress={() => {
           navigation.navigate("signinwithemail");

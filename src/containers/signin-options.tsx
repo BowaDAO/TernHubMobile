@@ -59,8 +59,8 @@ const SigninOptions = ({
           </View>
 
           <AuthCTA
-            label="Don't have an account?"
-            cta="Create account"
+            label="New to TheTernHub?"
+            cta="Create an account"
             onPress={() => {
               closeModal();
               openSignupModal();

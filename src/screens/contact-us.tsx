@@ -12,7 +12,7 @@ const ContactUs = () => {
           subheading="Please use the inbox to write your message to us"
         />
 
-        <InputFrame label="Email" value="" />
+        <InputFrame label="Email" />
 
         <View style={styles.container}>
           <Text style={styles.label}>Message </Text>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     padding: PADDING.large,
     borderRadius: RADIUS.small,
     borderWidth: 1,
-    borderColor: COLORS.purple,
+    borderColor: COLORS.black,
     height: 350,
     fontSize: SIZE.lg,
   },

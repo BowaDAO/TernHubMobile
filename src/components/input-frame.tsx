@@ -2,22 +2,17 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
 import { COLORS, FONT, GAP, PADDING, RADIUS, SIZE } from "../../constants";
 
-type Prop = {
+type Props = {
   label: string;
-  value: string;
   onChangeText?: (text: string) => void;
 };
 
-const InputFrame = ({ label, value, onChangeText }: Prop) => {
+const InputFrame = (props: Props) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>{label} </Text>
+      <Text style={styles.label}>{props.label} </Text>
 
-      <TextInput
-        style={styles.input}
-        value={value}
-        onChangeText={onChangeText}
-      />
+      <TextInput style={styles.input} onChangeText={props.onChangeText} />
     </View>
   );
 };
@@ -30,7 +25,7 @@ const styles = StyleSheet.create({
     padding: PADDING.large,
     borderRadius: RADIUS.small,
     borderWidth: 1,
-    borderColor: COLORS.purple,
+    borderColor: COLORS.black,
     height: 52,
     fontSize: SIZE.lg,
   },

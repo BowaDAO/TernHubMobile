@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontWeight: "600",
-    fontSize: SIZE.base,
+    fontSize: SIZE.lg,
     color: COLORS.purple,
     fontFamily: FONT.medium,
   },

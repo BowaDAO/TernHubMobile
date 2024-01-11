@@ -11,7 +11,13 @@ import { auth } from "../../server/firebase/config";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signin, signout } from "../redux/slice/user-slice";
-import { JobFullInfo, ContactUs, SendFeedback, SearchResult } from "../screens";
+import {
+  JobFullInfo,
+  ContactUs,
+  SendFeedback,
+  SearchResult,
+  WebViewScreen,
+} from "../screens";
 import { jobType } from "../types/type";
 import { SIZE, FONT } from "../../constants";
 
@@ -132,6 +138,12 @@ const RootNavigator = () => {
           // title: (route.params as { searchQuery: string })?.searchQuery,
           title: "",
         })}
+      />
+
+      <Stack.Screen
+        name="webview"
+        component={WebViewScreen}
+        options={{ title: "" }}
       />
     </Stack.Navigator>
   );
