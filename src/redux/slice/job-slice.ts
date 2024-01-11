@@ -24,7 +24,7 @@ const recentSearchesData = getUserRecentSearchesFromAsyncStorage();
 interface InitialJobStateType {
   jobs: jobType[];
   status: string;
-  error: undefined | string;
+  error: null | string;
   queriedJobs: jobType[];
   recentSearches: string[];
 }
@@ -32,37 +32,42 @@ interface InitialJobStateType {
 const initialState: InitialJobStateType = {
   jobs: [],
   status: "idle",
-  error: null || "",
+  error: null,
   queriedJobs: [],
   recentSearches: [],
 };
 
-export const getJobs = createAsyncThunk("job/getJobs", async () => {
-  try {
-    const querySnapshot = await getDocs(
-      query(collection(db, "jobs"), orderBy("timeStamp", "desc"))
-    );
+export const getJobs = createAsyncThunk(
+  "job/getJobs",
+  async (_, { rejectWithValue }) => {
+    try {
+      const querySnapshot = await getDocs(
+        query(collection(db, "jobs"), orderBy("timeStamp", "desc"))
+      );
 
-    const data = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      location: doc.get("companyLocation"),
-      logo: doc.get("companyLogo"),
-      company: doc.get("companyName"),
-      description: doc.get("jobDescription"),
-      role: doc.get("jobTitle"),
-      mode: doc.get("jobMode"),
-      time: doc.get("timeStamp"),
-    }));
+      const data = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        location: doc.get("companyLocation"),
+        logo: doc.get("companyLogo"),
+        company: doc.get("companyName"),
+        description: doc.get("jobDescription"),
+        role: doc.get("jobTitle"),
+        mode: doc.get("jobMode"),
+        time: doc.get("timeStamp"),
+      }));
 
-    return data;
-  } catch (error: any) {
-    return error;
+      return data;
+    } catch (error: any) {
+      return rejectWithValue(
+        error.message || "Something went wrong, please try again"
+      );
+    }
   }
-});
+);
 
 export const getJobsByUserQuery = createAsyncThunk(
   "job/getJobsByUserQuery",
-  async (searchQuery: string) => {
+  async (searchQuery: string, { rejectWithValue }) => {
     try {
       const querySnapshot = await getDocs(
         query(collection(db, "jobs"), where("jobTitle", "==", searchQuery))
@@ -81,7 +86,9 @@ export const getJobsByUserQuery = createAsyncThunk(
 
       return data;
     } catch (error: any) {
-      return error;
+      return rejectWithValue(
+        error.message || "Something went wrong, please try again"
+      );
     }
   }
 );
@@ -113,7 +120,7 @@ const jobSlice = createSlice({
       })
       .addCase(getJobs.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message;
+        state.error = action.error.message as string;
       })
       .addCase(getJobsByUserQuery.pending, (state, action) => {
         state.status = "loading";
@@ -124,7 +131,7 @@ const jobSlice = createSlice({
       })
       .addCase(getJobsByUserQuery.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message;
+        state.error = action.error.message as string;
       });
   },
 });

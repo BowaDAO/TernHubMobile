@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { jobType, JobToSaveType, BookmarksType } from "../../types/type";
+import {
+  jobType,
+  JobToSaveType,
+  BookmarksType,
+  ErrorResponse,
+} from "../../types/type";
 import { PayloadAction } from "@reduxjs/toolkit";
 import {
   setDoc,
@@ -21,7 +26,7 @@ const initialState: BookmarksType = {
 
 export const bookmarkAJob = createAsyncThunk(
   "bookmarks/bookmarkAJob",
-  async (item: JobToSaveType, { getState }) => {
+  async (item: JobToSaveType, { getState, rejectWithValue }) => {
     const { id, ...jobInfo } = item;
 
     const state = getState() as RootState;
@@ -33,14 +38,16 @@ export const bookmarkAJob = createAsyncThunk(
         ...jobInfo,
       });
     } catch (error: any) {
-      return error.message;
+      return rejectWithValue(
+        error.message || "Something went wrong, please try again."
+      );
     }
   }
 );
 
 export const unBookmarkAJob = createAsyncThunk(
   "bookmarks/unbookmarkAJob",
-  async (id: string, { getState }) => {
+  async (id: string, { getState, rejectWithValue }) => {
     const state = getState() as RootState;
 
     const uid = state.user.user?.uid;
@@ -48,14 +55,16 @@ export const unBookmarkAJob = createAsyncThunk(
     try {
       await deleteDoc(doc(db, `users/${uid}/savedJobs`, `${id}`));
     } catch (error: any) {
-      return error.message;
+      return rejectWithValue(
+        error.message || "Something went wrong, please try again."
+      );
     }
   }
 );
 
 export const getAUserBookmarkedJobs = createAsyncThunk(
   "bookmarks/getAUserBookmarkedJobs",
-  async (_, { getState }) => {
+  async (_, { getState, rejectWithValue }) => {
     const state = getState() as RootState;
 
     const uid = state.user?.user?.uid;
@@ -81,7 +90,9 @@ export const getAUserBookmarkedJobs = createAsyncThunk(
 
       return data;
     } catch (error: any) {
-      return error.message;
+      return rejectWithValue(
+        error.message || "Something went wrong, please try again."
+      );
     }
   }
 );
@@ -110,7 +121,7 @@ const bookmarksSlice = createSlice({
       })
       .addCase(getAUserBookmarkedJobs.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message;
+        state.error = action.error.message as string;
       });
   },
 });

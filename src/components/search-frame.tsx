@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
+
   search_icon_wrapper: {
     position: "absolute",
     left: 10,

@@ -85,7 +85,7 @@ const BookmarkAJob = ({ item }: { item: jobType }) => {
           ]}
           onPress={handleUnbookmarkJob}
         >
-          <Text style={[styles.label, { color: COLORS.purple }]}>Unsave</Text>
+          <Text style={[styles.label, { color: COLORS.purple }]}>Remove</Text>
         </Pressable>
       )}
     </>

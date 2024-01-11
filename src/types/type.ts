@@ -46,5 +46,9 @@ export type JobToSaveType = {
 export interface BookmarksType {
   bookmarkedJobs: jobType[];
   status: string;
-  error: any;
+  error: null | string;
 }
+
+export type ErrorResponse = {
+  message: string;
+};
