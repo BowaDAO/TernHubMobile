@@ -6,20 +6,19 @@ import {
   SignupWithEmail,
   ResetPassword,
   VerifyEmail,
-} from "../auth";
-import { auth } from "../../server/firebase/config";
+} from "@/auth";
+import { auth } from "@/server/firebase/config";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { signin, signout } from "../redux/slice/user-slice";
+import { signin, signout } from "@/redux/slice/user-slice";
 import {
   JobFullInfo,
   ContactUs,
   SendFeedback,
   SearchResult,
   WebViewScreen,
-} from "../screens";
-import { jobType } from "../types/type";
-import { SIZE, FONT } from "../../constants";
+} from "@/screens";
+import { SIZE, FONT } from "@/constants";
 
 const Stack = createStackNavigator();
 

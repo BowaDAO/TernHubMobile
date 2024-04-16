@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
-import { jobType } from "../types/type";
 import HTML from "react-native-render-html";
-import { FONT, SIZE } from "../../constants";
+import { FONT, SIZE } from "@/constants";
 
 const customStyles = {
   p: {

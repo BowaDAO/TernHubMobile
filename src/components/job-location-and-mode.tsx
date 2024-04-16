@@ -1,6 +1,5 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import { COLORS, FONT, GAP, SIZE, icon } from "../../constants";
-import { jobType } from "../types/type";
+import { COLORS, FONT, GAP, SIZE, icon } from "@/constants";
 
 const JobLocationAndMode = ({ item }: { item: jobType }) => {
   return (

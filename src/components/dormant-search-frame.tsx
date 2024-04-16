@@ -1,5 +1,5 @@
 import { StyleSheet, Text, Image, View, Pressable } from "react-native";
-import { RADIUS, COLORS, SIZE, icon, PADDING, FONT } from "../../constants";
+import { RADIUS, COLORS, SIZE, icon, PADDING, FONT } from "@/constants";
 import {
   useNavigation,
   NavigationProp,

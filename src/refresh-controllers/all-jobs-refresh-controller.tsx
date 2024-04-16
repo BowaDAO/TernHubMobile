@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
-import { DispatchType } from "../redux/store";
+import { DispatchType } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { RefreshControl } from "react-native";
-import { getJobs } from "../redux/slice/job-slice";
+import { getJobs } from "@/redux/slice/job-slice";
 
 const AllJobsRefreshController = () => {
   const [refreshing, setRefreshing] = useState(false);

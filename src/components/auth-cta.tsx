@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { COLORS, FONT, SIZE, GAP } from "../../constants";
+import { COLORS, FONT, SIZE, GAP } from "@/constants";
 
 type AuthCTAProp = {
   label: string;

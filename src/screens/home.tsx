@@ -5,15 +5,14 @@ import {
   RefreshController,
   CustomError,
   Loading,
-} from "../components";
-import { SigninOptions, SignupOptions } from "../containers";
-import { useModal } from "../hooks";
-import { GAP, PADDING } from "../../constants";
-import { jobType } from "../types/type";
-import { FullButton } from "../components/button";
+} from "@/components";
+import { SigninOptions, SignupOptions } from "@/containers";
+import { useModal } from "@/hooks";
+import { GAP, PADDING } from "@/constants";
+import { FullButton } from "@/components/button";
 import { useSelector, useDispatch } from "react-redux";
-import { DispatchType, RootState } from "../redux/store";
-import { getJobs } from "../redux/slice/job-slice";
+import { DispatchType, RootState } from "@/redux/store";
+import { getJobs } from "@/redux/slice/job-slice";
 
 const Home = () => {
   const {

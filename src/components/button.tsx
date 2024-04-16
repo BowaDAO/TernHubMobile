@@ -1,5 +1,5 @@
 import { Pressable, Text } from "react-native";
-import { COLORS, FONT, PADDING, RADIUS, SIZE } from "../../constants";
+import { COLORS, FONT, PADDING, RADIUS, SIZE } from "@/constants";
 
 type Prop = {
   label: string;

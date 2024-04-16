@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import React from "react";
-import { COLORS, FONT, GAP, PADDING, RADIUS, SIZE } from "../../constants";
+import { COLORS, FONT, GAP, PADDING, RADIUS, SIZE } from "@/constants";
 
 type Props = {
   label: string;

@@ -1,19 +1,19 @@
 import { StyleSheet, View, ScrollView } from "react-native";
-import { PADDING, GAP, FONT, SIZE } from "../../constants";
+import { PADDING, GAP, FONT, SIZE } from "@/constants";
 import {
   SearchFrame,
   SearchQuerySuggestions,
   RecentSearches,
-} from "../components";
-import { FullButton } from "../components/button";
+} from "@/components";
+import { FullButton } from "@/components/button";
 import { useEffect, useState } from "react";
 import {
   getJobsByUserQuery,
   setRecentSearches,
   getJobByQuery,
-} from "../redux/slice/job-slice";
+} from "@/redux/slice/job-slice";
 import { useDispatch, useSelector } from "react-redux";
-import { DispatchType, RootState } from "../redux/store";
+import { DispatchType, RootState } from "@/redux/store";
 import {
   useNavigation,
   NavigationProp,

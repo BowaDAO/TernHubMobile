@@ -6,13 +6,13 @@ import {
   Loader,
   ForgetPassword,
 } from "../components";
-import { FullButton } from "../components/button";
-import { GAP, PADDING } from "../../constants";
+import { FullButton } from "@/components/button";
+import { GAP, PADDING } from "@/constants";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../server/firebase/config";
+import { auth } from "@/server/firebase/config";
 import { useDispatch } from "react-redux";
-import { signin } from "../redux/slice/user-slice";
+import { signin } from "@/redux/slice/user-slice";
 import {
   useNavigation,
   NavigationProp,
@@ -21,8 +21,8 @@ import {
 import * as SecureStore from "expo-secure-store";
 import { useEmailVerification, useHaptic } from "../hooks";
 import Toast from "react-native-toast-message";
-import { DispatchType } from "../redux/store";
-import { getAUserBookmarkedJobs } from "../redux/slice/bookmarks-slice";
+import { DispatchType } from "@/redux/store";
+import { getAUserBookmarkedJobs } from "@/redux/slice/bookmarks-slice";
 import { Linking } from "react-native";
 
 const initialState = {

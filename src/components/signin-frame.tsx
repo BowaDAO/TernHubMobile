@@ -1,6 +1,5 @@
 import { StyleSheet, Text, Image, Pressable } from "react-native";
-import { AuthFrame } from "../types/type";
-import { COLORS, FONT, GAP, PADDING, RADIUS, SIZE } from "../../constants";
+import { COLORS, FONT, GAP, PADDING, RADIUS, SIZE } from "@/constants";
 
 const SigninFrame = ({ icon, label, onPress }: AuthFrame) => {
   return (

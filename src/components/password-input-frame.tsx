@@ -6,15 +6,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import {
-  RADIUS,
-  COLORS,
-  SIZE,
-  GAP,
-  FONT,
-  icon,
-  PADDING,
-} from "../../constants";
+import { RADIUS, COLORS, SIZE, GAP, FONT, icon, PADDING } from "@/constants";
 import { useState } from "react";
 
 type Prop = {

@@ -4,8 +4,7 @@ import {
   AsyncThunkAction,
 } from "@reduxjs/toolkit";
 import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
-import { db } from "../../../server/firebase/config";
-import { jobType } from "../../types/type";
+import { db } from "@/server/firebase/config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const getUserRecentSearchesFromAsyncStorage = async (): Promise<string[]> => {

@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { Alert } from "react-native";
-import { auth } from "../../server/firebase/config";
-import { signout } from "../redux/slice/user-slice";
-import { DispatchType } from "../redux/store";
+import { auth } from "@/server/firebase/config";
+import { signout } from "@/redux/slice/user-slice";
+import { DispatchType } from "@/redux/store";
 
 const useSignOut = () => {
   const dispatch: DispatchType = useDispatch();

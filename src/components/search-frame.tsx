@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput, Image, View } from "react-native";
-import { RADIUS, COLORS, SIZE, icon, PADDING, FONT } from "../../constants";
+import { RADIUS, COLORS, SIZE, icon, PADDING, FONT } from "@/constants";
 
 type Prop = {
   value: string;

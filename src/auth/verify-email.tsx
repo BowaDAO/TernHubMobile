@@ -1,8 +1,8 @@
-import { auth } from "../../server/firebase/config";
-import { AuthPrompt } from "../components";
-import { FullButton } from "../components/button";
+import { auth } from "@/server/firebase/config";
+import { AuthPrompt } from "@/components";
+import { FullButton } from "@/components/button";
 import { View, StyleSheet } from "react-native";
-import { PADDING, GAP } from "../../constants";
+import { PADDING, GAP } from "@/constants";
 import {
   NavigationProp,
   ParamListBase,
@@ -10,10 +10,10 @@ import {
 } from "@react-navigation/native";
 import { Alert } from "react-native";
 import ResendEmailVerificationLink from "./resend-email-verification-link";
-import { signin } from "../redux/slice/user-slice";
+import { signin } from "@/redux/slice/user-slice";
 import { useDispatch } from "react-redux";
-import { useHaptic } from "../hooks";
-import { DispatchType } from "../redux/store";
+import { useHaptic } from "@/hooks";
+import { DispatchType } from "@/redux/store";
 
 const VerifyEmail = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();

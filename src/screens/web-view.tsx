@@ -1,7 +1,6 @@
 import { StyleSheet, SafeAreaView } from "react-native";
 import { WebView } from "react-native-webview";
 import { RouteProp } from "@react-navigation/native";
-import { StackParamList } from "../types/type";
 
 type Prop = {
   route: RouteProp<StackParamList, "webview">;

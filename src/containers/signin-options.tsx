@@ -1,7 +1,7 @@
 import { StyleSheet, View, Modal, SafeAreaView } from "react-native";
-import { SigninWithFacebook, SigninWithGoogle } from "../libraries";
-import { AuthPrompt, AuthCTA, CloseModal, SigninFrame } from "../components";
-import { GAP, PADDING, icon } from "../../constants";
+import { SigninWithFacebook, SigninWithGoogle } from "@/libraries";
+import { AuthPrompt, AuthCTA, CloseModal, SigninFrame } from "@/components";
+import { GAP, PADDING, icon } from "@/constants";
 import {
   NavigationProp,
   ParamListBase,

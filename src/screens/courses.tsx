@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import { SIZE, FONT, icon, PADDING } from "../../constants";
+import { SIZE, FONT, icon, PADDING } from "@/constants";
 
 const Courses = () => {
   return (

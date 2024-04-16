@@ -2,9 +2,8 @@ import { StyleSheet, View } from "react-native";
 import JobInfo from "./job-info";
 import JobPostTime from "./job-post-time";
 import JobLocationAndMode from "./job-location-and-mode";
-import { jobType } from "../types/type";
-import { GAP } from "../../constants";
-import { BookmarkAJob } from "../libraries";
+import { GAP } from "@/constants";
+import { BookmarkAJob } from "@/libraries";
 
 const SingleJobInfoHeader = ({ item }: { item: jobType }) => {
   return (

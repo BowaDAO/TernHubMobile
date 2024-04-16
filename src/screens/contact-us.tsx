@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput, ScrollView } from "react-native";
-import { AuthPrompt, InputFrame } from "../components";
-import { PADDING, COLORS, GAP, SIZE, FONT, RADIUS } from "../../constants";
-import { FullButton } from "../components/button";
+import { AuthPrompt, InputFrame } from "@/components";
+import { PADDING, COLORS, GAP, SIZE, FONT, RADIUS } from "@/constants";
+import { FullButton } from "@/components/button";
 
 const ContactUs = () => {
   return (

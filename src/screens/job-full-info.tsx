@@ -1,10 +1,9 @@
 import { StyleSheet, ScrollView, View, SafeAreaView } from "react-native";
 import { RouteProp } from "@react-navigation/native";
-import { StackParamList } from "../types/type";
-import { SingleJobInfoHeader, SingleJobInfoBody } from "../components";
-import { FullButton } from "../components/button";
-import { GAP, PADDING } from "../../constants";
-import { useScreen } from "../hooks";
+import { SingleJobInfoHeader, SingleJobInfoBody } from "@/components";
+import { FullButton } from "@/components/button";
+import { GAP, PADDING } from "@/constants";
+import { useScreen } from "@/hooks";
 
 type Prop = {
   route: RouteProp<StackParamList, "jobfullinfo">;

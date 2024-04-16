@@ -5,9 +5,9 @@ import {
   AuthCTA,
   PasswordInputFrame,
   Loader,
-} from "../components";
-import { FullButton } from "../components/button";
-import { GAP, PADDING } from "../../constants";
+} from "@/components";
+import { FullButton } from "@/components/button";
+import { GAP, PADDING } from "@/constants";
 import {
   NavigationProp,
   ParamListBase,
@@ -15,9 +15,9 @@ import {
 } from "@react-navigation/native";
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../server/firebase/config";
+import { auth } from "@/server/firebase/config";
 import * as SecureStore from "expo-secure-store";
-import { useEmailVerification, useHaptic } from "../hooks";
+import { useEmailVerification, useHaptic } from "@/hooks";
 import Toast from "react-native-toast-message";
 
 const initialState = {

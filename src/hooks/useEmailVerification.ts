@@ -1,5 +1,5 @@
 import { sendEmailVerification } from "firebase/auth";
-import { auth } from "../../server/firebase/config";
+import { auth } from "@/server/firebase/config";
 import { Alert } from "react-native";
 
 const useEmailVerification = () => {

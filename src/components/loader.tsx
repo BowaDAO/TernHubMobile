@@ -1,5 +1,5 @@
 import { View, ActivityIndicator, Modal, StyleSheet } from "react-native";
-import { COLORS } from "../../constants";
+import { COLORS } from "@/constants";
 
 const Loader = () => {
   return (

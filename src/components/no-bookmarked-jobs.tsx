@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { SIZE, FONT } from "../../constants";
+import { SIZE, FONT } from "@/constants";
 
 const NoBookMarkedJobs = ({ message }: { message: string }) => {
   return (

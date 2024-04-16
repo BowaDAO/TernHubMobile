@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 import * as SecureStore from "expo-secure-store";
-import { User } from "../../types/type";
 
 interface UserType {
   user: User | null;

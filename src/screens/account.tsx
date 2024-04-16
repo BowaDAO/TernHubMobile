@@ -1,17 +1,17 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import useSignOut from "../hooks/useSignout";
+import useSignOut from "@/hooks/useSignout";
 import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
-import { COLORS, FONT, GAP, PADDING, SIZE } from "../../constants";
+import { RootState } from "@/redux/store";
+import { COLORS, FONT, GAP, PADDING, SIZE } from "@/constants";
 import {
   NavigationProp,
   ParamListBase,
   useNavigation,
 } from "@react-navigation/native";
-import { SigninOptions, SignupOptions } from "../containers";
-import { useModal } from "../hooks";
+import { SigninOptions, SignupOptions } from "@/containers";
+import { useModal } from "@/hooks";
 import { useState } from "react";
-import { FullButton } from "../components/button";
+import { FullButton } from "@/components/button";
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
 
 const Account = () => {

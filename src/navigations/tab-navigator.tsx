@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Home, Account, Bookmarks, Courses, Search } from "../screens";
-import { COLORS, FONT, SIZE, icon } from "../../constants";
+import { Home, Account, Bookmarks, Courses, Search } from "@/screens";
+import { COLORS, FONT, SIZE, icon } from "@/constants";
 import { Image } from "react-native";
 
 const Tab = createBottomTabNavigator();

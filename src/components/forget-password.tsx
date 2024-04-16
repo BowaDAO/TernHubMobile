@@ -1,5 +1,5 @@
 import { StyleSheet, Text, Pressable } from "react-native";
-import { COLORS, FONT, SIZE } from "../../constants";
+import { COLORS, FONT, SIZE } from "@/constants";
 import {
   useNavigation,
   NavigationProp,

@@ -1,17 +1,16 @@
 import { StyleSheet, View, FlatList, ListRenderItem } from "react-native";
 import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { DispatchType, RootState } from "../redux/store";
-import { jobType } from "../types/type";
+import { DispatchType, RootState } from "@/redux/store";
 import {
   CustomError,
   JobCard,
   NoBookMarkedJobs,
   Loading,
   RefreshController,
-} from "../components";
-import { GAP, PADDING } from "../../constants";
-import { getAUserBookmarkedJobs } from "../redux/slice/bookmarks-slice";
+} from "@/components";
+import { GAP, PADDING } from "@/constants";
+import { getAUserBookmarkedJobs } from "@/redux/slice/bookmarks-slice";
 import { useFocusEffect } from "@react-navigation/native";
 
 const Bookmarks = () => {

@@ -1,6 +1,5 @@
 import { StyleSheet, Text } from "react-native";
-import { COLORS, FONT, SIZE } from "../../constants";
-import { jobType } from "../types/type";
+import { COLORS, FONT, SIZE } from "@/constants";
 import { formatDistanceToNow } from "date-fns";
 
 const JobPostTime = ({ item }: { item: jobType }) => {

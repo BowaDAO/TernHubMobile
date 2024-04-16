@@ -1,8 +1,8 @@
 import { RefreshControl } from "react-native";
 import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
-import { DispatchType } from "../redux/store";
-import { getAUserBookmarkedJobs } from "../redux/slice/bookmarks-slice";
+import { DispatchType } from "@/redux/store";
+import { getAUserBookmarkedJobs } from "@/redux/slice/bookmarks-slice";
 
 const BookmarkedJobsRefreshController = () => {
   const [refreshing, setRefreshing] = useState(false);

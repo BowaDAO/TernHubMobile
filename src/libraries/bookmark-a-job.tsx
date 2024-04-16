@@ -1,13 +1,12 @@
 import { Pressable, StyleSheet, Text } from "react-native";
-import { COLORS, FONT, RADIUS, SIZE } from "../../constants";
+import { COLORS, FONT, RADIUS, SIZE } from "@/constants";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../redux/store";
-import { unBookmarkAJob, bookmarkAJob } from "../redux/slice/bookmarks-slice";
-import { DispatchType } from "../redux/store";
-import { jobType } from "../types/type";
+import { RootState } from "@/redux/store";
+import { unBookmarkAJob, bookmarkAJob } from "@/redux/slice/bookmarks-slice";
+import { DispatchType } from "@/redux/store";
 import Toast from "react-native-toast-message";
-import { useHaptic } from "../hooks";
-import { getAUserBookmarkedJobs } from "../redux/slice/bookmarks-slice";
+import { useHaptic } from "@/hooks";
+import { getAUserBookmarkedJobs } from "@/redux/slice/bookmarks-slice";
 
 const BookmarkAJob = ({ item }: { item: jobType }) => {
   const dispatch: DispatchType = useDispatch();

@@ -2,10 +2,8 @@ import { StyleSheet, View, Pressable } from "react-native";
 import JobInfo from "./job-info";
 import JobPostTime from "./job-post-time";
 import JobLocationAndMode from "./job-location-and-mode";
-import { BookmarkAJob } from "../libraries";
-
-import { COLORS, GAP, PADDING, RADIUS } from "../../constants";
-import { jobType } from "../types/type";
+import { BookmarkAJob } from "@/libraries";
+import { COLORS, GAP, PADDING, RADIUS } from "@/constants";
 import {
   useNavigation,
   NavigationProp,

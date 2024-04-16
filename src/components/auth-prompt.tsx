@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { COLORS, SIZE, FONT, GAP } from "../../constants";
+import { COLORS, SIZE, FONT, GAP } from "@/constants";
 
 type AuthPrmoptProp = {
   heading: string;

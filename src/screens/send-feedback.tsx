@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, ScrollView, TextInput } from "react-native";
-import { AuthPrompt, InputFrame } from "../components";
-import { FullButton } from "../components/button";
-import { PADDING, RADIUS, GAP, COLORS, SIZE, FONT } from "../../constants";
+import { AuthPrompt, InputFrame } from "@/components";
+import { FullButton } from "@/components/button";
+import { PADDING, RADIUS, GAP, COLORS, SIZE, FONT } from "@/constants";
 
 const SendFeedback = () => {
   return (

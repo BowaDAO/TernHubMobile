@@ -1,10 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {
-  jobType,
-  JobToSaveType,
-  BookmarksType,
-  ErrorResponse,
-} from "../../types/type";
 import { PayloadAction } from "@reduxjs/toolkit";
 import {
   setDoc,
@@ -15,7 +9,7 @@ import {
   collection,
   orderBy,
 } from "firebase/firestore";
-import { db } from "../../../server/firebase/config";
+import { db } from "@/server/firebase/config";
 import { RootState } from "../store";
 
 const initialState: BookmarksType = {

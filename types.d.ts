@@ -1,13 +1,10 @@
-import { ImageSourcePropType } from "react-native";
-import { NavigationProp } from "@react-navigation/native";
-
-export type AuthFrame = {
+type AuthFrame = {
   icon: ImageSourcePropType;
   label: string;
   onPress: () => void | NavigationProp<ReactNavigation.RootParamList>;
 };
 
-export type jobType = {
+type jobType = {
   id: string;
   company: string;
   role: string;
@@ -18,7 +15,7 @@ export type jobType = {
   description: string;
 };
 
-export type User = {
+type User = {
   name: string;
   email: string;
   password: string;
@@ -28,14 +25,14 @@ export type User = {
   refreshToken: string;
 };
 
-export type StackParamList = {
+type StackParamList = {
   Home: { item: jobType };
   jobfullinfo: { item: jobType };
   searchresult: { searchQuery: string };
   webview: { url: string };
 };
 
-export type JobToSaveType = {
+type JobToSaveType = {
   id: string;
   companyName: string;
   companyLogo: string;
@@ -46,12 +43,12 @@ export type JobToSaveType = {
   timeStamp: string;
 };
 
-export interface BookmarksType {
+interface BookmarksType {
   bookmarkedJobs: jobType[];
   status: string;
   error: null | string;
 }
 
-export type ErrorResponse = {
+type ErrorResponse = {
   message: string;
 };

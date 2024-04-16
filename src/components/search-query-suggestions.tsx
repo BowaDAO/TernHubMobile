@@ -1,16 +1,13 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
-import { SIZE, FONT, GAP, COLORS } from "../../constants";
+import { SIZE, FONT, GAP, COLORS } from "@/constants";
 import { useDispatch } from "react-redux";
 import {
   useNavigation,
   NavigationProp,
   ParamListBase,
 } from "@react-navigation/native";
-import { DispatchType } from "../redux/store";
-import {
-  getJobsByUserQuery,
-  setRecentSearches,
-} from "../redux/slice/job-slice";
+import { DispatchType } from "@/redux/store";
+import { getJobsByUserQuery, setRecentSearches } from "@/redux/slice/job-slice";
 import Loading from "./loading";
 
 type PropType = {

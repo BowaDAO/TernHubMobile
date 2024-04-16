@@ -1,5 +1,5 @@
 import { StyleSheet, Pressable, Image } from "react-native";
-import { icon } from "../../constants";
+import { icon } from "@/constants";
 
 type CloseModalProp = {
   onPress: () => void;

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, Pressable, Alert } from "react-native";
-import { COLORS, FONT, SIZE } from "../../constants";
-import { useEmailVerification, useHaptic } from "../hooks";
+import { COLORS, FONT, SIZE } from "@/constants";
+import { useEmailVerification, useHaptic } from "@/hooks";
 import Toast from "react-native-toast-message";
 
 const ResendEmailVerificationLink = () => {
