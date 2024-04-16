@@ -13,6 +13,7 @@ import { FullButton } from "@/components/button";
 import { useSelector, useDispatch } from "react-redux";
 import { DispatchType, RootState } from "@/redux/store";
 import { getJobs } from "@/redux/slice/job-slice";
+import { Fragment } from "react";
 
 const Home = () => {
   const {
@@ -42,7 +43,7 @@ const Home = () => {
     <View style={styles.body}>
       <DormantSearchFrame />
 
-      <>
+      <Fragment>
         {status === "loading" ? (
           <Loading />
         ) : status === "failed" ? (
@@ -60,7 +61,7 @@ const Home = () => {
             refreshControl={<RefreshController />}
           />
         )}
-      </>
+      </Fragment>
 
       <View
         style={{
@@ -76,7 +77,7 @@ const Home = () => {
         )}
       </View>
 
-      <>
+      <Fragment>
         <SignupOptions
           closeSignupModal={closeSignupModal}
           signupModalVisible={signupModalVisible}
@@ -90,7 +91,7 @@ const Home = () => {
             openSignupModal={openSignupModal}
           />
         )}
-      </>
+      </Fragment>
     </View>
   );
 };
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     padding: PADDING.normal,
-    gap: GAP.small,
+    gap: GAP.base,
   },
 });
 

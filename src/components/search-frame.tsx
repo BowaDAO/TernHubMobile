@@ -1,14 +1,14 @@
 import { StyleSheet, TextInput, Image, View } from "react-native";
 import { RADIUS, COLORS, SIZE, icon, PADDING, FONT } from "@/constants";
 
-type Prop = {
+type Props = {
   value: string;
   onChangeText: (text: string) => void;
 };
 
-const SearchFrame = ({ value, onChangeText }: Prop) => {
+const SearchFrame = ({ value, onChangeText }: Props) => {
   return (
-    <View style={{ height: 52 }}>
+    <View>
       <View style={styles.search_icon_wrapper}>
         <Image source={icon.search} style={styles.icon} />
       </View>
@@ -27,17 +27,16 @@ export default SearchFrame;
 
 const styles = StyleSheet.create({
   input: {
-    width: "100%",
     paddingVertical: PADDING.large,
     paddingHorizontal: 40,
     borderRadius: RADIUS.small,
     borderWidth: 1,
     borderColor: COLORS.purple,
-    height: "100%",
     fontFamily: FONT.regular,
     fontSize: SIZE.xl,
     color: COLORS.greyblack,
     justifyContent: "center",
+    height: 52,
   },
 
   icon: {

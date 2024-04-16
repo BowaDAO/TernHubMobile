@@ -14,7 +14,7 @@ export const COLORS = {
 };
 
 export const SIZE = {
-  large: 38,
+  verylarge: 38,
   xxl: 22,
   xl: 20,
   lg: 18,

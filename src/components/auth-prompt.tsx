@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     gap: GAP.small,
   },
   heading: {
-    fontSize: SIZE.large,
+    fontSize: SIZE.verylarge,
     fontFamily: FONT.bold,
   },
   subheading: {
