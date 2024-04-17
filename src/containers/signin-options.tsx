@@ -1,4 +1,11 @@
-import { StyleSheet, View, Modal, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Modal,
+  SafeAreaView,
+  Pressable,
+  Text,
+} from "react-native";
 import { SigninWithFacebook, SigninWithGoogle } from "@/libraries";
 import { AuthPrompt, AuthCTA, CloseModal, SigninFrame } from "@/components";
 import { GAP, PADDING, icon } from "@/constants";

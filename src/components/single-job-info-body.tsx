@@ -6,9 +6,12 @@ const customStyles = {
   p: {
     marginBottom: -10,
     lineHeight: 25,
+    fontSize: 16,
   },
   li: {
     lineHeight: 25,
+    fontSize: 16,
+    marginBottom: 8,
   },
 };
 
